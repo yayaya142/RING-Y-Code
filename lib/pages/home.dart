@@ -419,7 +419,6 @@ class _HomeState extends State<Home> {
                                 'Show Steps',
                                 style: TextStyle(
                                   color: Colors.blue,
-                                  decoration: TextDecoration.underline,
                                 ),
                               ),
                               onTap: () {
