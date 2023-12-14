@@ -1,8 +1,7 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api, use_key_in_widget_constructors
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:or_calculator/Services/DropDownDataBase.dart';
-import 'package:or_calculator/Services/Shapes/Circle.dart';
 import 'package:or_calculator/Services/Shapes/Shapes.dart';
 import 'package:or_calculator/Services/Shapes/defaultShape.dart';
 import 'package:or_calculator/Services/calculator.dart';
@@ -65,10 +64,7 @@ class _HomeState extends State<Home> {
   MyShapes stockObjectShapeGUI = DefaultShape();
 
   void resetShapeData(bool customerData) {
-    customerShapeLength = 0.0;
-    stockShapeLength = 0.0;
-    stockShapeWeight = 0.0;
-    showSteps = "No steps to show";
+    resetResult();
 
     if (customerData) {
       customerShapeData['diameter'] = 0.0;
@@ -79,6 +75,13 @@ class _HomeState extends State<Home> {
       stockShapeData['width'] = 0.0;
       stockShapeData['thickness'] = 0.0;
     }
+  }
+
+  void resetResult() {
+    customerShapeLength = 0.0;
+    stockShapeLength = 0.0;
+    stockShapeWeight = 0.0;
+    showSteps = "No steps to show";
   }
 
   @override
@@ -119,6 +122,7 @@ class _HomeState extends State<Home> {
                         style: TextStyle(fontSize: innerBoxTextSize),
                       )), // Add a hint here
                       onChanged: (String? newValue) {
+                        resetResult();
                         setState(() {
                           selectedMetalType = newValue!;
                           if (selectedMetalType != null) {
@@ -180,6 +184,7 @@ class _HomeState extends State<Home> {
                         );
                       }).toList(),
                       onChanged: (newValue) {
+                        resetResult();
                         setState(() {
                           selectedSize = newValue!;
                           if (selectedSize != null) {
@@ -254,11 +259,14 @@ class _HomeState extends State<Home> {
                 ),
                 customerObjectShapeGUI.buildWidget(context, true),
                 Center(
-                  child: Icon(
-                    Icons.arrow_downward,
-                    size: MediaQuery.of(context).size.width *
-                        0.15, // Adjust the size as needed
-                    color: Colors.blue, // Change the color if desired
+                  child: Transform.rotate(
+                    angle: 3.14 / 2,
+                    child: Icon(
+                      Icons.forward,
+                      size: MediaQuery.of(context).size.width *
+                          0.15, // Adjust the size as needed
+                      color: Colors.blue, // Change the color if desired
+                    ),
                   ),
                 ),
                 Text(
@@ -403,50 +411,57 @@ class _HomeState extends State<Home> {
                                   fontSize: resultBoxTextSize + 3,
                                   color: Colors.red)),
                         )
-                      : Column(
-                          children: [
-                            Text(
-                              "Customer Length: ${customerShapeLength.toStringAsFixed(1)} mm",
-                              style: TextStyle(fontSize: resultBoxTextSize),
-                            ),
-                            Text(
-                              "Stock Length: ${stockShapeLength.toStringAsFixed(1)} mm",
-                              style: TextStyle(fontSize: resultBoxTextSize),
-                            ),
-                            Text(
-                              "Weight: ${stockShapeWeight.toStringAsFixed(1)} g",
-                              style: TextStyle(fontSize: resultBoxTextSize),
-                            ),
-                            InkWell(
-                              child: Text(
-                                'Show Steps',
-                                style: TextStyle(
-                                  color: Colors.blue,
+                      : showSteps == "No steps to show"
+                          ? Center(
+                              child: Text("Place Holder",
+                                  style: TextStyle(
+                                      fontSize: resultBoxTextSize + 3,
+                                      color: Color.fromARGB(255, 54, 20, 150))),
+                            )
+                          : Column(
+                              children: [
+                                Text(
+                                  "Customer Length: ${customerShapeLength.toStringAsFixed(1)} mm",
+                                  style: TextStyle(fontSize: resultBoxTextSize),
                                 ),
-                              ),
-                              onTap: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: Text("Steps"),
-                                      content: SingleChildScrollView(
-                                          child: Text(showSteps)),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: Text("Close"),
-                                        ),
-                                      ],
+                                Text(
+                                  "Stock Length: ${stockShapeLength.toStringAsFixed(1)} mm",
+                                  style: TextStyle(fontSize: resultBoxTextSize),
+                                ),
+                                Text(
+                                  "Weight: ${stockShapeWeight.toStringAsFixed(1)} g",
+                                  style: TextStyle(fontSize: resultBoxTextSize),
+                                ),
+                                InkWell(
+                                  child: Text(
+                                    'Show Steps',
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: Text("Steps"),
+                                          content: SingleChildScrollView(
+                                              child: Text(showSteps)),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: Text("Close"),
+                                            ),
+                                          ],
+                                        );
+                                      },
                                     );
                                   },
-                                );
-                              },
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
                 ),
               ],
             ),
