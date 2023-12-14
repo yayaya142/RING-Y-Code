@@ -16,4 +16,6 @@ abstract class MyShapes {
   }
 
   Widget buildWidget(BuildContext context, bool isCustomerBuild);
+
+  void clearTextField();
 }

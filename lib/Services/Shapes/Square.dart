@@ -7,6 +7,7 @@ import 'package:or_calculator/pages/home.dart';
 
 class MySquare extends MyShapes {
   double width = 0;
+  final widthTextFiled = TextEditingController();
 
   // Constructor for Square
   MySquare(double a) {
@@ -23,6 +24,11 @@ class MySquare extends MyShapes {
   double get thickness {
     double thickness = width;
     return thickness;
+  }
+
+  @override
+  void clearTextField() {
+    widthTextFiled.clear();
   }
 
   @override
@@ -72,6 +78,7 @@ class MySquare extends MyShapes {
               children: [
                 Expanded(
                   child: TextField(
+                    controller: widthTextFiled,
                     keyboardType:
                         TextInputType.numberWithOptions(decimal: true),
                     inputFormatters: <TextInputFormatter>[
@@ -81,11 +88,12 @@ class MySquare extends MyShapes {
                     style: TextStyle(fontSize: shapesAttributesTextSize),
                     textAlign: TextAlign.center,
                     maxLength: 8,
-                    onChanged: (value) {
+                    onChanged: (widthTextFiled) {
                       if (isCustomerBuild) {
-                        customerShapeData["width"] = double.parse(value);
+                        customerShapeData["width"] =
+                            double.parse(widthTextFiled);
                       } else {
-                        stockShapeData["width"] = double.parse(value);
+                        stockShapeData["width"] = double.parse(widthTextFiled);
                       }
                     },
                     decoration: InputDecoration(

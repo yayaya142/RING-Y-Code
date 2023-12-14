@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:or_calculator/Services/DropDownDataBase.dart';
+import 'package:or_calculator/Services/Shapes/Circle.dart';
 import 'package:or_calculator/Services/Shapes/Shapes.dart';
 import 'package:or_calculator/Services/Shapes/defaultShape.dart';
 import 'package:or_calculator/Services/calculator.dart';
@@ -231,6 +232,7 @@ class _HomeState extends State<Home> {
                         selectedShapeCustomer = newValue!;
                         // reset the shape data
                         resetShapeData(true);
+                        customerObjectShapeGUI.clearTextField();
                         if (selectedShapeCustomer != null) {
                           customerShapeData["shape"] =
                               selectedShapeCustomer.toString();
@@ -291,6 +293,7 @@ class _HomeState extends State<Home> {
                     ), // Add a hint here
                     onChanged: (String? newValue) {
                       resetShapeData(false);
+                      stockObjectShapeGUI.clearTextField();
                       setState(() {
                         selectedShapeStock = newValue!;
                         if (selectedShapeStock != null) {

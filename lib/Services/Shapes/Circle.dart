@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +9,8 @@ import 'package:or_calculator/pages/home.dart';
 
 class MyCircle extends MyShapes {
   double diameter = 0;
+  final diameterTextFiled = TextEditingController();
+
 // Constructor for round
   MyCircle(double d) {
     diameter = d;
@@ -24,6 +26,11 @@ class MyCircle extends MyShapes {
   double get thickness {
     double thickness = diameter;
     return thickness;
+  }
+
+  @override
+  void clearTextField() {
+    diameterTextFiled.clear();
   }
 
   @override
@@ -73,6 +80,7 @@ class MyCircle extends MyShapes {
               children: [
                 Expanded(
                   child: TextField(
+                    controller: diameterTextFiled,
                     keyboardType:
                         TextInputType.numberWithOptions(decimal: true),
                     inputFormatters: <TextInputFormatter>[
@@ -82,11 +90,13 @@ class MyCircle extends MyShapes {
                     style: TextStyle(fontSize: shapesAttributesTextSize),
                     textAlign: TextAlign.center,
                     maxLength: 8,
-                    onChanged: (value) {
+                    onChanged: (diameterTextFiled) {
                       if (isCustomerBuild) {
-                        customerShapeData["diameter"] = double.parse(value);
+                        customerShapeData["diameter"] =
+                            double.parse(diameterTextFiled);
                       } else {
-                        stockShapeData["diameter"] = double.parse(value);
+                        stockShapeData["diameter"] =
+                            double.parse(diameterTextFiled);
                       }
                     },
                     decoration: InputDecoration(

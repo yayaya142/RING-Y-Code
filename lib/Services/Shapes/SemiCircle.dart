@@ -10,6 +10,8 @@ import 'package:or_calculator/pages/home.dart';
 
 class MySemiCircle extends MyShapes {
   double diameter = 0;
+  final diameterTextFiled = TextEditingController();
+
 // Constructor for SemiRound
   MySemiCircle(double d) {
     diameter = d;
@@ -25,6 +27,11 @@ class MySemiCircle extends MyShapes {
   double get thickness {
     double thickness = diameter / 2;
     return thickness;
+  }
+
+  @override
+  void clearTextField() {
+    diameterTextFiled.clear();
   }
 
   @override
@@ -74,6 +81,7 @@ class MySemiCircle extends MyShapes {
               children: [
                 Expanded(
                   child: TextField(
+                    controller: diameterTextFiled,
                     keyboardType:
                         TextInputType.numberWithOptions(decimal: true),
                     inputFormatters: <TextInputFormatter>[
@@ -83,11 +91,13 @@ class MySemiCircle extends MyShapes {
                     style: TextStyle(fontSize: shapesAttributesTextSize),
                     textAlign: TextAlign.center,
                     maxLength: 8,
-                    onChanged: (value) {
+                    onChanged: (diameterTextFiled) {
                       if (isCustomerBuild) {
-                        customerShapeData["diameter"] = double.parse(value);
+                        customerShapeData["diameter"] =
+                            double.parse(diameterTextFiled);
                       } else {
-                        stockShapeData["diameter"] = double.parse(value);
+                        stockShapeData["diameter"] =
+                            double.parse(diameterTextFiled);
                       }
                     },
                     decoration: InputDecoration(

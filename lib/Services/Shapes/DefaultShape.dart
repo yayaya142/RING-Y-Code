@@ -18,4 +18,7 @@ class DefaultShape extends MyShapes {
   Widget buildWidget(BuildContext context, bool isCustomerBuild) {
     return const SizedBox.shrink();
   }
+
+  @override
+  void clearTextField() {}
 }

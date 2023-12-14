@@ -9,6 +9,9 @@ import 'package:or_calculator/pages/home.dart';
 class MyRectangle extends MyShapes {
   double sideA = 0;
   double sideB = 0;
+  final widthTextFiled = TextEditingController();
+  final thicknessTextFiled = TextEditingController();
+
   // Constructor for Rectangle
 
   MyRectangle(double a, double b) {
@@ -26,6 +29,12 @@ class MyRectangle extends MyShapes {
   double get thickness {
     double thickness = sideB;
     return thickness;
+  }
+
+  @override
+  void clearTextField() {
+    widthTextFiled.clear();
+    thicknessTextFiled.clear();
   }
 
   @override
@@ -78,6 +87,7 @@ class MyRectangle extends MyShapes {
                       children: [
                         Expanded(
                           child: TextField(
+                            controller: widthTextFiled,
                             keyboardType:
                                 TextInputType.numberWithOptions(decimal: true),
                             inputFormatters: <TextInputFormatter>[
@@ -89,12 +99,13 @@ class MyRectangle extends MyShapes {
                                 TextStyle(fontSize: shapesAttributesTextSize),
                             textAlign: TextAlign.center,
                             maxLength: 8,
-                            onChanged: (value) {
+                            onChanged: (widthTextFiled) {
                               if (isCustomerBuild) {
                                 customerShapeData["width"] =
-                                    double.parse(value);
+                                    double.parse(widthTextFiled);
                               } else {
-                                stockShapeData["width"] = double.parse(value);
+                                stockShapeData["width"] =
+                                    double.parse(widthTextFiled);
                               }
                             },
                             decoration: InputDecoration(
@@ -162,6 +173,7 @@ class MyRectangle extends MyShapes {
                       children: [
                         Expanded(
                           child: TextField(
+                            controller: thicknessTextFiled,
                             keyboardType:
                                 TextInputType.numberWithOptions(decimal: true),
                             inputFormatters: <TextInputFormatter>[
@@ -173,13 +185,13 @@ class MyRectangle extends MyShapes {
                                 TextStyle(fontSize: shapesAttributesTextSize),
                             textAlign: TextAlign.center,
                             maxLength: 8,
-                            onChanged: (value) {
+                            onChanged: (thicknessTextFiled) {
                               if (isCustomerBuild) {
                                 customerShapeData["thickness"] =
-                                    double.parse(value);
+                                    double.parse(thicknessTextFiled);
                               } else {
                                 stockShapeData["thickness"] =
-                                    double.parse(value);
+                                    double.parse(thicknessTextFiled);
                               }
                             },
                             decoration: InputDecoration(
