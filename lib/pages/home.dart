@@ -1,13 +1,16 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api, use_key_in_widget_constructors
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:or_calculator/Services/DropDownDataBase.dart';
 import 'package:or_calculator/Services/Shapes/Shapes.dart';
 import 'package:or_calculator/Services/Shapes/defaultShape.dart';
 import 'package:or_calculator/Services/calculator.dart';
+import 'package:or_calculator/pages/ShowFormula.dart';
 import 'package:or_calculator/pages/custom_container.dart';
 import 'package:or_calculator/pages/homeShapes.dart';
 import 'package:or_calculator/theme.dart';
+import 'package:flutter_tex/flutter_tex.dart';
 
 // Home Page variables for shapes
 const double allSizePadding = 15.0;
@@ -368,7 +371,7 @@ class _HomeState extends State<Home> {
                       customerShapeLength = result[1];
                       stockShapeLength = result[2];
                       stockShapeWeight = result[3];
-
+                      // if the customer info is empty
                       if (customerShapeLength < 0 ||
                           customerShapeLength.isNaN ||
                           customerShapeLength.isInfinite) {
@@ -377,15 +380,19 @@ class _HomeState extends State<Home> {
                         customerShapeLength = 0.0;
                         stockShapeLength = 0.0;
                         stockShapeWeight = 0.0;
-                      } else if (stockShapeLength < 0 ||
+                      }
+                      //  if the stock info is empty
+                      else if (stockShapeLength < 0 ||
                           stockShapeLength.isNaN ||
                           stockShapeLength.isInfinite ||
                           stockShapeWeight < 0 ||
                           stockShapeWeight.isNaN ||
                           stockShapeWeight.isInfinite) {
-                        showOnlyCustomerLength = true;
                         resultError = false;
-                      } else {
+                        showOnlyCustomerLength = true;
+                      }
+                      // if eventing is ok
+                      else {
                         resultError = false;
                         showOnlyCustomerLength = false;
                       }
@@ -445,7 +452,7 @@ class _HomeState extends State<Home> {
                                       ),
                                 InkWell(
                                   child: Text(
-                                    'Show Steps',
+                                    'Show More',
                                     style: TextStyle(
                                       color: Colors.blue,
                                     ),
@@ -457,7 +464,19 @@ class _HomeState extends State<Home> {
                                         return AlertDialog(
                                           title: Text("Steps"),
                                           content: SingleChildScrollView(
-                                              child: Text(showSteps)),
+                                              child: Column(
+                                            children: [
+                                              Text(showSteps),
+                                              TeXView(
+                                                child: TeXViewColumn(children: [
+                                                  ShowFormula()
+                                                      .stockWireLength(),
+                                                  ShowFormula().weightOutput(),
+                                                  ShowFormula().lengthFormula(),
+                                                ]),
+                                              )
+                                            ],
+                                          )),
                                           actions: [
                                             TextButton(
                                               onPressed: () {

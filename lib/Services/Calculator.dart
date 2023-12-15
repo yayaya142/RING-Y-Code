@@ -21,6 +21,8 @@ class Calculator {
         stockShapeLength * stockShapeArea * getDensity(metalType);
     double stockShapeVolume =
         stockShape.calculateVolume(stockShapeArea, stockShapeLength);
+    double customerShapeWeight =
+        customerShapeLength * customerShapeArea * getDensity(metalType);
 
     // check if solution make sense
     if (customerShapeArea <= 0 || customerShapeVolume <= 0) {
@@ -28,31 +30,32 @@ class Calculator {
     }
 
     // write steps
-    showSteps.write("The formula is:\n");
-    showSteps.write("customer length = (thickness + innerDiameter) * pi\n");
+    // write customer steps
+    String formatSpaces = "         ";
+    showSteps.write("Ring wire:\n");
     showSteps.write(
-        "customer shape length = ${customerShapeLength.toStringAsFixed(2)} \n");
+        "$formatSpaces Length = ${customerShapeLength.toStringAsFixed(1)} mm\n");
     showSteps.write(
-        "customer Shape Volume = customer Shape Area * customer Shape Length\n");
+        "$formatSpaces Cross section = ${customerShapeArea.toStringAsFixed(1)} mm^2\n");
     showSteps.write(
-        "${customerShapeVolume.toStringAsFixed(2)} = ${customerShapeArea.toStringAsFixed(2)} * ${customerShapeLength.toStringAsFixed(2)}\n");
-    showSteps
-        .write("stock shape area = ${stockShapeArea.toStringAsFixed(2)}\n");
-    showSteps.write(
-        "stock shape length = customer shape volume / stock shape area\n");
-    showSteps.write(
-        "${stockShapeLength.toStringAsFixed(2)} = ${customerShapeVolume.toStringAsFixed(2)} / ${stockShapeArea.toStringAsFixed(2)}\n");
-    showSteps.write(
-        "stock shape weight = stock shape length * stock shape area * density\n");
-    showSteps.write(
-        "${stockShapeWeight.toStringAsFixed(2)} = ${stockShapeLength.toStringAsFixed(2)} * ${stockShapeArea.toStringAsFixed(2)} * ${getDensity(metalType).toStringAsFixed(2)}\n");
-    showSteps.write("\n\nData:\n");
-    showSteps.write("Density: ${getDensity(metalType)}\n");
-    showSteps.write("A1: ${customerShapeArea.toStringAsFixed(2)}\n");
-    showSteps.write("V1: ${customerShapeVolume.toStringAsFixed(2)}\n");
-    showSteps.write("\n");
-    showSteps.write("A2: ${stockShape.calculateArea().toStringAsFixed(2)}\n");
-    showSteps.write("V2: ${stockShapeVolume.toStringAsFixed(2)}\n");
+        "$formatSpaces Weight = ${customerShapeWeight.toStringAsFixed(1)} gr\n\n");
+    // write stock steps
+    if (!(stockShapeLength <= 0 ||
+        stockShapeLength.isInfinite ||
+        stockShapeLength.isNaN ||
+        stockShapeWeight <= 0 ||
+        stockShapeWeight.isInfinite ||
+        stockShapeWeight.isNaN)) {
+      // write stock steps as normal
+      showSteps.write("Stock wire:\n");
+
+      showSteps.write(
+          "$formatSpaces Length ${stockShapeLength.toStringAsFixed(1)} mm\n");
+      showSteps.write(
+          "$formatSpaces Cross section = ${stockShapeArea.toStringAsFixed(1)} mm^2\n");
+      showSteps.write(
+          "$formatSpaces Weight = ${stockShapeWeight.toStringAsFixed(1)} gr\n");
+    }
 
     // Create a list to store the results
     List<dynamic> results = [
