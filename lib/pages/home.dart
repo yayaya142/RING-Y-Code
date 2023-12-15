@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api, use_key_in_widget_constructors, sort_child_properties_last
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,6 +16,9 @@ import 'package:flutter_tex/flutter_tex.dart';
 const double allSizePadding = 15.0;
 const double sizeBoxHeight = 10;
 const double sizeBoxWidth = 2;
+const double calculateButtonWidth = 0.6;
+const double calculateButtonHeight = 0.06;
+const String resultBoxSpacing = "     ";
 // Page Text
 const double innerBoxTextSize = 14;
 const double shapesAttributesTextSize = 11;
@@ -92,7 +95,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Odeni Jewelry'),
+        title: Text(""),
         backgroundColor: ThemeColors().appBarColor,
         centerTitle: true,
       ),
@@ -102,6 +105,13 @@ class _HomeState extends State<Home> {
             padding: const EdgeInsets.all(allSizePadding),
             child: Column(
               children: [
+                Text(
+                  'Ring',
+                  style: TextStyle(
+                      fontSize: shapeHeadlineSize,
+                      color: shapeHeadlineColor,
+                      fontWeight: FontWeight.bold),
+                ),
                 Center(
                   child: Container(
                     height: MediaQuery.of(context).size.height *
@@ -200,19 +210,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width *
-                      CustomContainer().containerWidth,
-                  child: Divider(
-                    thickness: CustomContainer().dividerSize,
-                    color: CustomContainer().dividerColor,
-                  ),
-                ),
-                Text(
-                  'Customer Shape',
-                  style: TextStyle(
-                      fontSize: shapeHeadlineSize,
-                      color: shapeHeadlineColor,
-                      fontWeight: FontWeight.bold),
+                  height: sizeBoxHeight,
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height *
@@ -274,7 +272,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Text(
-                  'Stock Shape',
+                  'Stock Wire',
                   style: TextStyle(
                       fontSize: shapeHeadlineSize,
                       color: shapeHeadlineColor,
@@ -336,6 +334,9 @@ class _HomeState extends State<Home> {
                     color: CustomContainer().dividerColor,
                   ),
                 ),
+                SizedBox(
+                  height: 3,
+                ),
                 ElevatedButton(
                   onPressed: () {
                     print('customershapedata: $customerShapeData');
@@ -376,7 +377,7 @@ class _HomeState extends State<Home> {
                           customerShapeLength.isNaN ||
                           customerShapeLength.isInfinite) {
                         resultError = true;
-                        showSteps = "No steps to show";
+                        showSteps = "Error";
                         customerShapeLength = 0.0;
                         stockShapeLength = 0.0;
                         stockShapeWeight = 0.0;
@@ -399,100 +400,106 @@ class _HomeState extends State<Home> {
                     });
                   },
                   child: Text('Calculate'),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(
+                        MediaQuery.of(context).size.width *
+                            calculateButtonWidth,
+                        MediaQuery.of(context).size.height *
+                            calculateButtonHeight),
+                  ),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width *
-                      CustomContainer().containerWidth,
+                  height: 15,
                 ),
-                Container(
-                  height: MediaQuery.of(context).size.height *
-                      CustomContainer().containerHeightForResult,
-                  width: MediaQuery.of(context).size.width *
-                      CustomContainer().containerWidthForResult,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(CustomContainer()
-                        .containerOutsideBorderRadiusForResult), // Adjust the radius as needed
-                    border: Border.all(
-                      color: CustomContainer().outsideContainerColor,
-                    ),
-                  ),
-                  child: resultError
-                      ? Center(
-                          child: Text("Error, please check the inputs",
-                              style: TextStyle(
-                                  fontSize: resultBoxTextSize + 3,
-                                  color: Colors.red)),
-                        )
-                      : showSteps == "No steps to show"
-                          ? Center(
-                              child: Text("Place Holder",
-                                  style: TextStyle(
-                                      fontSize: resultBoxTextSize + 3,
-                                      color: Color.fromARGB(255, 54, 20, 150))),
-                            )
-                          : Column(
-                              children: [
-                                Text(
-                                  "Customer Length: ${customerShapeLength.toStringAsFixed(1)} mm",
-                                  style: TextStyle(fontSize: resultBoxTextSize),
-                                ),
-                                showOnlyCustomerLength
-                                    ? SizedBox()
-                                    : Text(
-                                        "Stock Length: ${stockShapeLength.toStringAsFixed(1)} mm",
-                                        style: TextStyle(
-                                            fontSize: resultBoxTextSize),
-                                      ),
-                                showOnlyCustomerLength
-                                    ? SizedBox()
-                                    : Text(
-                                        "Weight: ${stockShapeWeight.toStringAsFixed(1)} g",
-                                        style: TextStyle(
-                                            fontSize: resultBoxTextSize),
-                                      ),
-                                InkWell(
-                                  child: Text(
-                                    'Show More',
+                showSteps == "No steps to show"
+                    ? SizedBox()
+                    : Container(
+                        height: MediaQuery.of(context).size.height *
+                            CustomContainer().containerHeightForResult,
+                        width: MediaQuery.of(context).size.width *
+                            CustomContainer().containerWidthForResult,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(CustomContainer()
+                              .containerOutsideBorderRadiusForResult), // Adjust the radius as needed
+                          border: Border.all(
+                            color: CustomContainer().outsideContainerColor,
+                          ),
+                        ),
+                        child: resultError
+                            ? Center(
+                                child: Text("Error, please check the inputs",
                                     style: TextStyle(
-                                      color: Colors.blue,
-                                    ),
+                                        fontSize: resultBoxTextSize + 3,
+                                        color: Colors.red)),
+                              )
+                            : Column(
+                                children: [
+                                  SizedBox(
+                                    height: 5,
                                   ),
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          title: Text("Steps"),
-                                          content: SingleChildScrollView(
-                                              child: Column(
-                                            children: [
-                                              Text(showSteps),
-                                              TeXView(
-                                                child: TeXViewColumn(children: [
-                                                  ShowFormula()
-                                                      .stockWireLength(),
-                                                  ShowFormula().weightOutput(),
-                                                  ShowFormula().lengthFormula(),
-                                                ]),
-                                              )
+                                  Text(
+                                    "Ring length: ${customerShapeLength.toStringAsFixed(1)} [mm]",
+                                    style:
+                                        TextStyle(fontSize: resultBoxTextSize),
+                                  ),
+                                  Text(
+                                    "Ring weight: ${stockShapeWeight.toStringAsFixed(1)} [gr]",
+                                    style:
+                                        TextStyle(fontSize: resultBoxTextSize),
+                                  ),
+                                  showOnlyCustomerLength
+                                      ? SizedBox()
+                                      : Text(
+                                          "Stock wire: ${stockShapeLength.toStringAsFixed(1)} [mm]",
+                                          style: TextStyle(
+                                              fontSize: resultBoxTextSize),
+                                        ),
+                                  InkWell(
+                                    child: Text(
+                                      'Show More',
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Text("Steps"),
+                                            content: SingleChildScrollView(
+                                                child: Column(
+                                              children: [
+                                                Text(showSteps),
+                                                TeXView(
+                                                  child:
+                                                      TeXViewColumn(children: [
+                                                    ShowFormula()
+                                                        .stockWireLength(),
+                                                    ShowFormula()
+                                                        .weightOutput(),
+                                                    ShowFormula()
+                                                        .lengthFormula(),
+                                                  ]),
+                                                )
+                                              ],
+                                            )),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: Text("Close"),
+                                              ),
                                             ],
-                                          )),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.of(context).pop();
-                                              },
-                                              child: Text("Close"),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  },
-                                ),
-                              ],
-                            ),
-                ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ],
+                              ),
+                      ),
               ],
             ),
           ),

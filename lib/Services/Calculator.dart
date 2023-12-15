@@ -17,12 +17,11 @@ class Calculator {
     double stockShapeArea = stockShape.calculateArea();
     double stockShapeLength = (customerShapeVolume / stockShapeArea);
     // calculate stock weight
-    double stockShapeWeight =
-        stockShapeLength * stockShapeArea * getDensity(metalType);
-    double stockShapeVolume =
-        stockShape.calculateVolume(stockShapeArea, stockShapeLength);
     double customerShapeWeight =
         customerShapeLength * customerShapeArea * getDensity(metalType);
+    double stockShapeWeight = customerShapeWeight;
+    double stockShapeVolume =
+        stockShape.calculateVolume(stockShapeArea, stockShapeLength);
 
     // check if solution make sense
     if (customerShapeArea <= 0 || customerShapeVolume <= 0) {
