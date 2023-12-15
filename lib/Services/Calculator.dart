@@ -19,13 +19,11 @@ class Calculator {
     // calculate stock weight
     double stockShapeWeight =
         stockShapeLength * stockShapeArea * getDensity(metalType);
+    double stockShapeVolume =
+        stockShape.calculateVolume(stockShapeArea, stockShapeLength);
 
     // check if solution make sense
-    if (customerShapeArea <= 0 ||
-        customerShapeVolume <= 0 ||
-        stockShapeArea <= 0 ||
-        stockShapeLength <= 0 ||
-        stockShapeWeight <= 0) {
+    if (customerShapeArea <= 0 || customerShapeVolume <= 0) {
       return ["Error", -1.0, -1.0, -1.0];
     }
 
@@ -54,7 +52,7 @@ class Calculator {
     showSteps.write("V1: ${customerShapeVolume.toStringAsFixed(2)}\n");
     showSteps.write("\n");
     showSteps.write("A2: ${stockShape.calculateArea().toStringAsFixed(2)}\n");
-    showSteps.write("V2: ${stockShapeLength.toStringAsFixed(2)}\n");
+    showSteps.write("V2: ${stockShapeVolume.toStringAsFixed(2)}\n");
 
     // Create a list to store the results
     List<dynamic> results = [

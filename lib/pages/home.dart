@@ -53,6 +53,7 @@ class _HomeState extends State<Home> {
   double stockShapeLength = 0.0;
   double stockShapeWeight = 0.0;
   bool resultError = false;
+  bool showOnlyCustomerLength = false;
   // DropDown Menus
   String? selectedMetalType;
   String? selectedShapeCustomer;
@@ -337,6 +338,7 @@ class _HomeState extends State<Home> {
                     print('customershapedata: $customerShapeData');
                     print('stockshapedata: $stockShapeData');
                     print(resultError);
+                    print(showOnlyCustomerLength);
                     // hide the keyboard
                     FocusManager.instance.primaryFocus?.unfocus();
                     // vibration
@@ -368,21 +370,24 @@ class _HomeState extends State<Home> {
                       stockShapeWeight = result[3];
 
                       if (customerShapeLength < 0 ||
-                          stockShapeLength < 0 ||
-                          stockShapeWeight < 0 ||
                           customerShapeLength.isNaN ||
-                          stockShapeLength.isNaN ||
-                          stockShapeWeight.isNaN ||
-                          customerShapeLength.isInfinite ||
-                          stockShapeLength.isInfinite ||
-                          stockShapeWeight.isInfinite) {
+                          customerShapeLength.isInfinite) {
                         resultError = true;
                         showSteps = "No steps to show";
                         customerShapeLength = 0.0;
                         stockShapeLength = 0.0;
                         stockShapeWeight = 0.0;
+                      } else if (stockShapeLength < 0 ||
+                          stockShapeLength.isNaN ||
+                          stockShapeLength.isInfinite ||
+                          stockShapeWeight < 0 ||
+                          stockShapeWeight.isNaN ||
+                          stockShapeWeight.isInfinite) {
+                        showOnlyCustomerLength = true;
+                        resultError = false;
                       } else {
                         resultError = false;
+                        showOnlyCustomerLength = false;
                       }
                     });
                   },
@@ -424,14 +429,20 @@ class _HomeState extends State<Home> {
                                   "Customer Length: ${customerShapeLength.toStringAsFixed(1)} mm",
                                   style: TextStyle(fontSize: resultBoxTextSize),
                                 ),
-                                Text(
-                                  "Stock Length: ${stockShapeLength.toStringAsFixed(1)} mm",
-                                  style: TextStyle(fontSize: resultBoxTextSize),
-                                ),
-                                Text(
-                                  "Weight: ${stockShapeWeight.toStringAsFixed(1)} g",
-                                  style: TextStyle(fontSize: resultBoxTextSize),
-                                ),
+                                showOnlyCustomerLength
+                                    ? SizedBox()
+                                    : Text(
+                                        "Stock Length: ${stockShapeLength.toStringAsFixed(1)} mm",
+                                        style: TextStyle(
+                                            fontSize: resultBoxTextSize),
+                                      ),
+                                showOnlyCustomerLength
+                                    ? SizedBox()
+                                    : Text(
+                                        "Weight: ${stockShapeWeight.toStringAsFixed(1)} g",
+                                        style: TextStyle(
+                                            fontSize: resultBoxTextSize),
+                                      ),
                                 InkWell(
                                   child: Text(
                                     'Show Steps',
