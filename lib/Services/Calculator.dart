@@ -34,11 +34,11 @@ class Calculator {
     String formatSpaces = "         ";
     showSteps.write("Ring wire:\n");
     showSteps.write(
-        "$formatSpaces Length = ${customerShapeLength.toStringAsFixed(1)} mm\n");
+        "$formatSpaces Length = ${customerShapeLength.toStringAsFixed(1)} [mm]\n");
     showSteps.write(
-        "$formatSpaces Cross section = ${customerShapeArea.toStringAsFixed(1)} mm^2\n");
+        "$formatSpaces Cross section = ${customerShapeArea.toStringAsFixed(1)} [mm^2]\n");
     showSteps.write(
-        "$formatSpaces Weight = ${customerShapeWeight.toStringAsFixed(1)} gr\n\n");
+        "$formatSpaces Weight = ${customerShapeWeight.toStringAsFixed(1)} [gr]\n\n");
     // write stock steps
     if (!(stockShapeLength <= 0 ||
         stockShapeLength.isInfinite ||
@@ -50,11 +50,11 @@ class Calculator {
       showSteps.write("Stock wire:\n");
 
       showSteps.write(
-          "$formatSpaces Length ${stockShapeLength.toStringAsFixed(1)} mm\n");
+          "$formatSpaces Length = ${stockShapeLength.toStringAsFixed(1)} [mm]\n");
       showSteps.write(
-          "$formatSpaces Cross section = ${stockShapeArea.toStringAsFixed(1)} mm^2\n");
+          "$formatSpaces Cross section = ${stockShapeArea.toStringAsFixed(1)} [mm^2]\n");
       showSteps.write(
-          "$formatSpaces Weight = ${stockShapeWeight.toStringAsFixed(1)} gr\n");
+          "$formatSpaces Weight = ${stockShapeWeight.toStringAsFixed(1)} [gr]\n");
     }
 
     // Create a list to store the results
