@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <application
         android:usesCleartextTraffic="true"
-        android:label="or_calculator"
+        android:label="Wire Converter"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
