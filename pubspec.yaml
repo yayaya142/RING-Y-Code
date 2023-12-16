@@ -10,20 +10,29 @@ environment:
 
 
 dependencies:
+  # my packages
   webview_flutter: ^3.0.4
   flutter_tex: ^4.0.3+4
+  flutter_native_splash: ^2.3.8
+  # stock packages
   flutter:
     sdk: flutter
     
-
   cupertino_icons: ^1.0.2
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-
   flutter_lints: ^2.0.0
+
+# add splash screen
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/splash.png
+  android: true
+  ios: true
+
 
 
 flutter:
