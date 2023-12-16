@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 abstract class MyShapes {
-  double textFiledPadding = 10.5;
+  double textFiledPadding = 7;
   double sizeBoxWidth = 15;
   String textFiledHintText = "Enter number";
 

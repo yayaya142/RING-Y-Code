@@ -43,7 +43,7 @@ flutter_icons:
 
 
 flutter:
-
-
   uses-material-design: true
-
+# my assets folder
+  assets:
+    - assets/background_image.png

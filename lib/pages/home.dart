@@ -14,13 +14,14 @@ import 'package:flutter_tex/flutter_tex.dart';
 // Home Page variables for shapes
 const double allSizePadding = 15.0;
 const double sizeBoxHeight = 10;
-const double sizeBoxWidth = 2;
+const double sizeBoxWidth = 15;
+const double shapeSizeBoxHeight = 5;
 const double calculateButtonWidth = 0.6;
-const double calculateButtonHeight = 0.06;
+const double calculateButtonHeight = 0.04;
 const String resultBoxSpacing = "     ";
 // Page Text
-const double innerBoxTextSize = 14;
-const double shapesAttributesTextSize = 11;
+const double innerBoxTextSize = 17;
+const double shapesAttributesTextSize = 15;
 const double resultBoxTextSize = 14;
 // headline size and color
 const double shapeHeadlineSize = 14;
@@ -94,25 +95,134 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(""),
+        title: Text(
+          "Ring Wire Converter",
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: ThemeColors().appBarColor,
         centerTitle: true,
       ),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(allSizePadding),
-            child: Column(
-              children: [
-                Text(
-                  'Ring',
-                  style: TextStyle(
-                      fontSize: shapeHeadlineSize,
-                      color: shapeHeadlineColor,
-                      fontWeight: FontWeight.bold),
-                ),
-                Center(
-                  child: Container(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/background_image.png'),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: ListView(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(allSizePadding),
+              child: Column(
+                children: [
+                  Text(
+                    'Ring Wire',
+                    style: TextStyle(
+                        fontSize: shapeHeadlineSize,
+                        color: shapeHeadlineColor,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Center(
+                    child: Container(
+                      height: MediaQuery.of(context).size.height *
+                          CustomContainer().containerHeight,
+                      width: MediaQuery.of(context).size.width *
+                          CustomContainer().containerWidth,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(CustomContainer()
+                            .containerInnerSideBorderRadius), // Adjust the radius as needed
+                        border: Border.all(
+                          color: CustomContainer().outsideContainerColor,
+                        ),
+                      ),
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        // icon: SizedBox.shrink(),
+                        underline: Container(),
+                        value: selectedMetalType,
+                        hint: Center(
+                            child: Text(
+                          'Metal Type',
+                          style: TextStyle(fontSize: innerBoxTextSize),
+                        )), // Add a hint here
+                        onChanged: (String? newValue) {
+                          resetResult();
+                          setState(() {
+                            selectedMetalType = newValue!;
+                            if (selectedMetalType != null) {
+                              customerShapeData['ringMetalType'] =
+                                  selectedMetalType!.toString();
+                            }
+                          });
+                        },
+                        items: MetalOptionsDropDown.metal.map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Center(
+                              child: Text(
+                                value,
+                                style: TextStyle(fontSize: innerBoxTextSize),
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizeBoxHeight,
+                  ),
+                  Center(
+                    child: Container(
+                      height: MediaQuery.of(context).size.height *
+                          CustomContainer().containerHeight,
+                      width: MediaQuery.of(context).size.width *
+                          CustomContainer().containerWidth,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(CustomContainer()
+                            .containerInnerSideBorderRadius), // Adjust the radius as needed
+                        border: Border.all(
+                          color: CustomContainer().outsideContainerColor,
+                        ),
+                      ),
+                      child: DropdownButton<double>(
+                        isExpanded: true,
+                        // icon: SizedBox.shrink(),
+                        underline: Container(),
+                        value: selectedSize, // currently selected value
+                        hint: Center(
+                            child: Text(
+                          'Size US',
+                          style: TextStyle(fontSize: innerBoxTextSize),
+                        )), // Add a hint here
+
+                        items: SizeOptionsDropDown.sizes.map((size) {
+                          return DropdownMenuItem<double>(
+                            value: size, // value associated with the menu item
+                            child: Center(
+                              child: Text(
+                                "${size.toString()}  US",
+                                style: TextStyle(fontSize: innerBoxTextSize),
+                              ),
+                            ), // displayed text
+                          );
+                        }).toList(),
+                        onChanged: (newValue) {
+                          resetResult();
+                          setState(() {
+                            selectedSize = newValue!;
+                            if (selectedSize != null) {
+                              customerShapeData['ringSize'] = selectedSize;
+                            }
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizeBoxHeight,
+                  ),
+                  Container(
                     height: MediaQuery.of(context).size.height *
                         CustomContainer().containerHeight,
                     width: MediaQuery.of(context).size.width *
@@ -128,41 +238,61 @@ class _HomeState extends State<Home> {
                       isExpanded: true,
                       // icon: SizedBox.shrink(),
                       underline: Container(),
-                      value: selectedMetalType,
+                      value: selectedShapeCustomer,
                       hint: Center(
                           child: Text(
-                        'Metal Type',
+                        'Shape',
                         style: TextStyle(fontSize: innerBoxTextSize),
                       )), // Add a hint here
                       onChanged: (String? newValue) {
-                        resetResult();
                         setState(() {
-                          selectedMetalType = newValue!;
-                          if (selectedMetalType != null) {
-                            customerShapeData['ringMetalType'] =
-                                selectedMetalType!.toString();
+                          selectedShapeCustomer = newValue!;
+                          // reset the shape data
+                          resetShapeData(true);
+                          customerObjectShapeGUI.clearTextField();
+                          if (selectedShapeCustomer != null) {
+                            customerShapeData["shape"] =
+                                selectedShapeCustomer.toString();
+                            customerObjectShapeGUI = CreateShapeObject()
+                                .createShape(
+                                    customerShapeData["shape"], 0, 0, 0);
                           }
                         });
                       },
-                      items: MetalOptionsDropDown.metal.map((String value) {
+                      items: ShapeOptionsDropDown.shapes.map((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Center(
-                            child: Text(
-                              value,
-                              style: TextStyle(fontSize: innerBoxTextSize),
-                            ),
+                            child: Text(value,
+                                style: TextStyle(fontSize: innerBoxTextSize)),
                           ),
                         );
                       }).toList(),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: sizeBoxHeight,
-                ),
-                Center(
-                  child: Container(
+                  SizedBox(
+                    height: shapeSizeBoxHeight,
+                  ),
+                  customerObjectShapeGUI.buildWidget(context, true),
+                  Center(
+                    child: Transform.rotate(
+                      angle: 3.14 / 2,
+                      child: Icon(
+                        Icons.forward,
+                        size: MediaQuery.of(context).size.width *
+                            0.12, // Adjust the size as needed
+                        color: Colors.blue, // Change the color if desired
+                      ),
+                    ),
+                  ),
+                  Text(
+                    'Stock Wire',
+                    style: TextStyle(
+                        fontSize: shapeHeadlineSize,
+                        color: shapeHeadlineColor,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Container(
                     height: MediaQuery.of(context).size.height *
                         CustomContainer().containerHeight,
                     width: MediaQuery.of(context).size.width *
@@ -174,346 +304,274 @@ class _HomeState extends State<Home> {
                         color: CustomContainer().outsideContainerColor,
                       ),
                     ),
-                    child: DropdownButton<double>(
+                    child: DropdownButton<String>(
                       isExpanded: true,
                       // icon: SizedBox.shrink(),
                       underline: Container(),
-                      value: selectedSize, // currently selected value
+                      value: selectedShapeStock,
                       hint: Center(
-                          child: Text(
-                        'Size US',
-                        style: TextStyle(fontSize: innerBoxTextSize),
-                      )), // Add a hint here
-
-                      items: SizeOptionsDropDown.sizes.map((size) {
-                        return DropdownMenuItem<double>(
-                          value: size, // value associated with the menu item
-                          child: Center(
-                            child: Text(
-                              "${size.toString()}  US",
-                              style: TextStyle(fontSize: innerBoxTextSize),
-                            ),
-                          ), // displayed text
-                        );
-                      }).toList(),
-                      onChanged: (newValue) {
-                        resetResult();
+                        child: Text(
+                          'Shape',
+                          style: TextStyle(fontSize: innerBoxTextSize),
+                        ),
+                      ), // Add a hint here
+                      onChanged: (String? newValue) {
+                        resetShapeData(false);
+                        stockObjectShapeGUI.clearTextField();
                         setState(() {
-                          selectedSize = newValue!;
-                          if (selectedSize != null) {
-                            customerShapeData['ringSize'] = selectedSize;
+                          selectedShapeStock = newValue!;
+                          if (selectedShapeStock != null) {
+                            stockShapeData['shape'] =
+                                selectedShapeStock.toString();
+                            stockObjectShapeGUI = CreateShapeObject()
+                                .createShape(stockShapeData['shape'], 0, 0, 0);
                           }
                         });
                       },
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: sizeBoxHeight,
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height *
-                      CustomContainer().containerHeight,
-                  width: MediaQuery.of(context).size.width *
-                      CustomContainer().containerWidth,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(CustomContainer()
-                        .containerInnerSideBorderRadius), // Adjust the radius as needed
-                    border: Border.all(
-                      color: CustomContainer().outsideContainerColor,
-                    ),
-                  ),
-                  child: DropdownButton<String>(
-                    isExpanded: true,
-                    // icon: SizedBox.shrink(),
-                    underline: Container(),
-                    value: selectedShapeCustomer,
-                    hint: Center(
-                        child: Text(
-                      'Shape',
-                      style: TextStyle(fontSize: innerBoxTextSize),
-                    )), // Add a hint here
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedShapeCustomer = newValue!;
-                        // reset the shape data
-                        resetShapeData(true);
-                        customerObjectShapeGUI.clearTextField();
-                        if (selectedShapeCustomer != null) {
-                          customerShapeData["shape"] =
-                              selectedShapeCustomer.toString();
-                          customerObjectShapeGUI = CreateShapeObject()
-                              .createShape(customerShapeData["shape"], 0, 0, 0);
-                        }
-                      });
-                    },
-                    items: ShapeOptionsDropDown.shapes.map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Center(
-                          child: Text(value,
-                              style: TextStyle(fontSize: innerBoxTextSize)),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ),
-                customerObjectShapeGUI.buildWidget(context, true),
-                Center(
-                  child: Transform.rotate(
-                    angle: 3.14 / 2,
-                    child: Icon(
-                      Icons.forward,
-                      size: MediaQuery.of(context).size.width *
-                          0.15, // Adjust the size as needed
-                      color: Colors.blue, // Change the color if desired
-                    ),
-                  ),
-                ),
-                Text(
-                  'Stock Wire',
-                  style: TextStyle(
-                      fontSize: shapeHeadlineSize,
-                      color: shapeHeadlineColor,
-                      fontWeight: FontWeight.bold),
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height *
-                      CustomContainer().containerHeight,
-                  width: MediaQuery.of(context).size.width *
-                      CustomContainer().containerWidth,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(CustomContainer()
-                        .containerInnerSideBorderRadius), // Adjust the radius as needed
-                    border: Border.all(
-                      color: CustomContainer().outsideContainerColor,
-                    ),
-                  ),
-                  child: DropdownButton<String>(
-                    isExpanded: true,
-                    // icon: SizedBox.shrink(),
-                    underline: Container(),
-                    value: selectedShapeStock,
-                    hint: Center(
-                      child: Text(
-                        'Shape',
-                        style: TextStyle(fontSize: innerBoxTextSize),
-                      ),
-                    ), // Add a hint here
-                    onChanged: (String? newValue) {
-                      resetShapeData(false);
-                      stockObjectShapeGUI.clearTextField();
-                      setState(() {
-                        selectedShapeStock = newValue!;
-                        if (selectedShapeStock != null) {
-                          stockShapeData['shape'] =
-                              selectedShapeStock.toString();
-                          stockObjectShapeGUI = CreateShapeObject()
-                              .createShape(stockShapeData['shape'], 0, 0, 0);
-                        }
-                      });
-                    },
-                    items: ShapeOptionsDropDown.shapes.map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Center(
-                          child: Text(value,
-                              style: TextStyle(fontSize: innerBoxTextSize)),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ),
-                stockObjectShapeGUI.buildWidget(context, false),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width *
-                      CustomContainer().containerWidth,
-                  child: Divider(
-                    thickness: CustomContainer().dividerSize,
-                    color: CustomContainer().dividerColor,
-                  ),
-                ),
-                SizedBox(
-                  height: 3,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    print('customershapedata: $customerShapeData');
-                    print('stockshapedata: $stockShapeData');
-                    print(resultError);
-                    print(showOnlyCustomerLength);
-                    // hide the keyboard
-                    FocusManager.instance.primaryFocus?.unfocus();
-                    // vibration
-                    HapticFeedback.vibrate();
-                    // Create a shape object for the customer
-                    MyShapes customerShapeObject = CreateShapeObject()
-                        .createShape(
-                            customerShapeData['shape'],
-                            customerShapeData['diameter'],
-                            customerShapeData['width'],
-                            customerShapeData['thickness']);
-                    // Create a shape object for the stock
-                    MyShapes stockShapeObject = CreateShapeObject().createShape(
-                        stockShapeData['shape'],
-                        stockShapeData['diameter'],
-                        stockShapeData['width'],
-                        stockShapeData['thickness']);
-                    // Convert the volume
-                    result = Calculator.convertVolume(
-                        customerShapeObject,
-                        stockShapeObject,
-                        customerShapeData['ringSize'],
-                        customerShapeData['ringMetalType']);
-                    // update the result
-                    setState(() {
-                      showSteps = result[0];
-                      customerShapeLength = result[1];
-                      stockShapeLength = result[2];
-                      stockShapeWeight = result[3];
-                      // if the customer info is empty
-                      if (customerShapeLength < 0 ||
-                          customerShapeLength.isNaN ||
-                          customerShapeLength.isInfinite) {
-                        resultError = true;
-                        showSteps = "Error";
-                        customerShapeLength = 0.0;
-                        stockShapeLength = 0.0;
-                        stockShapeWeight = 0.0;
-                      }
-                      //  if the stock info is empty
-                      else if (stockShapeLength < 0 ||
-                          stockShapeLength.isNaN ||
-                          stockShapeLength.isInfinite ||
-                          stockShapeWeight < 0 ||
-                          stockShapeWeight.isNaN ||
-                          stockShapeWeight.isInfinite) {
-                        resultError = false;
-                        showOnlyCustomerLength = true;
-                      }
-                      // if eventing is ok
-                      else {
-                        resultError = false;
-                        showOnlyCustomerLength = false;
-                      }
-                    });
-                  },
-                  child: Text('Calculate'),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(
-                        MediaQuery.of(context).size.width *
-                            calculateButtonWidth,
-                        MediaQuery.of(context).size.height *
-                            calculateButtonHeight),
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                showSteps == "No steps to show"
-                    ? SizedBox()
-                    : Container(
-                        height: MediaQuery.of(context).size.height *
-                            CustomContainer().containerHeightForResult,
-                        width: MediaQuery.of(context).size.width *
-                            CustomContainer().containerWidthForResult,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(CustomContainer()
-                              .containerOutsideBorderRadiusForResult), // Adjust the radius as needed
-                          border: Border.all(
-                            color: CustomContainer().outsideContainerColor,
+                      items: ShapeOptionsDropDown.shapes.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Center(
+                            child: Text(value,
+                                style: TextStyle(fontSize: innerBoxTextSize)),
                           ),
-                        ),
-                        child: resultError
-                            ? Center(
-                                child: Text("Error, please check the inputs",
-                                    style: TextStyle(
-                                        fontSize: resultBoxTextSize + 3,
-                                        color: Colors.red)),
-                              )
-                            : Column(
-                                children: [
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                  SizedBox(
+                    height: shapeSizeBoxHeight,
+                  ),
+                  stockObjectShapeGUI.buildWidget(context, false),
+                  SizedBox(
+                    height: 6,
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width *
+                        CustomContainer().containerWidth,
+                    child: Divider(
+                      thickness: CustomContainer().dividerSize,
+                      color: CustomContainer().dividerColor,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 0,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      print('customershapedata: $customerShapeData');
+                      print('stockshapedata: $stockShapeData');
+                      print(resultError);
+                      print(showOnlyCustomerLength);
+                      // hide the keyboard
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      // vibration
+                      HapticFeedback.vibrate();
+                      // Create a shape object for the customer
+                      MyShapes customerShapeObject = CreateShapeObject()
+                          .createShape(
+                              customerShapeData['shape'],
+                              customerShapeData['diameter'],
+                              customerShapeData['width'],
+                              customerShapeData['thickness']);
+                      // Create a shape object for the stock
+                      MyShapes stockShapeObject = CreateShapeObject()
+                          .createShape(
+                              stockShapeData['shape'],
+                              stockShapeData['diameter'],
+                              stockShapeData['width'],
+                              stockShapeData['thickness']);
+                      // Convert the volume
+                      result = Calculator.convertVolume(
+                          customerShapeObject,
+                          stockShapeObject,
+                          customerShapeData['ringSize'],
+                          customerShapeData['ringMetalType']);
+                      // update the result
+                      setState(() {
+                        showSteps = result[0];
+                        customerShapeLength = result[1];
+                        stockShapeLength = result[2];
+                        stockShapeWeight = result[3];
+                        // if the customer info is empty
+                        if (customerShapeLength < 0 ||
+                            customerShapeLength.isNaN ||
+                            customerShapeLength.isInfinite) {
+                          resultError = true;
+                          showSteps = "Error";
+                          customerShapeLength = 0.0;
+                          stockShapeLength = 0.0;
+                          stockShapeWeight = 0.0;
+                        }
+                        //  if the stock info is empty
+                        else if (stockShapeLength < 0 ||
+                            stockShapeLength.isNaN ||
+                            stockShapeLength.isInfinite ||
+                            stockShapeWeight < 0 ||
+                            stockShapeWeight.isNaN ||
+                            stockShapeWeight.isInfinite) {
+                          resultError = false;
+                          showOnlyCustomerLength = true;
+                        }
+                        // if eventing is ok
+                        else {
+                          resultError = false;
+                          showOnlyCustomerLength = false;
+                        }
+                      });
+                    },
+                    child: Text('Calculate', style: TextStyle(fontSize: 25)),
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(
+                          MediaQuery.of(context).size.width *
+                              calculateButtonWidth,
+                          MediaQuery.of(context).size.height *
+                              calculateButtonHeight),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 7,
+                  ),
+                  showSteps == "No steps to show"
+                      ? SizedBox()
+                      : Container(
+                          height: MediaQuery.of(context).size.height *
+                              CustomContainer().containerHeightForResult,
+                          width: MediaQuery.of(context).size.width *
+                              CustomContainer().containerWidthForResult,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(CustomContainer()
+                                .containerOutsideBorderRadiusForResult), // Adjust the radius as needed
+                            border: Border.all(
+                              color: CustomContainer().outsideContainerColor,
+                            ),
+                            color: CustomContainer().insideContainerColor,
+                          ),
+                          child: resultError
+                              ? Center(
+                                  child: Text("Error, please check the inputs",
+                                      style: TextStyle(
+                                          fontSize: resultBoxTextSize + 3,
+                                          color: Colors.red)),
+                                )
+                              : Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
                                     children: [
-                                      Text(
-                                        "Ring length:",
-                                        style: TextStyle(
-                                            fontSize: resultBoxTextSize),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Ring length:",
+                                                  style: TextStyle(
+                                                      fontSize:
+                                                          resultBoxTextSize),
+                                                ),
+                                                Text(
+                                                  'Ring weight:',
+                                                  style: TextStyle(
+                                                      fontSize:
+                                                          resultBoxTextSize),
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                showOnlyCustomerLength
+                                                    ? SizedBox()
+                                                    : Text(
+                                                        'Stock wire:',
+                                                        style: TextStyle(
+                                                            fontSize:
+                                                                resultBoxTextSize),
+                                                      ),
+                                              ]),
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  '${customerShapeLength.toStringAsFixed(1)} [mm]',
+                                                  style: TextStyle(
+                                                      fontSize:
+                                                          resultBoxTextSize),
+                                                ),
+                                                Text(
+                                                    '${stockShapeWeight.toStringAsFixed(1)} [gr]'),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                showOnlyCustomerLength
+                                                    ? SizedBox()
+                                                    : Text(
+                                                        '${stockShapeLength.toStringAsFixed(1)} [mm]',
+                                                        style: TextStyle(
+                                                            fontSize:
+                                                                resultBoxTextSize),
+                                                      ),
+                                              ]),
+                                        ],
                                       ),
-                                      Text(
-                                        " ${customerShapeLength.toStringAsFixed(1)} [mm]",
-                                        style: TextStyle(
-                                            fontSize: resultBoxTextSize),
+                                      InkWell(
+                                        child: Text(
+                                          'Show More',
+                                          style: TextStyle(
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                title: Text("Steps"),
+                                                content: SingleChildScrollView(
+                                                    child: Column(
+                                                  children: [
+                                                    Text(showSteps),
+                                                    TeXView(
+                                                      child: TeXViewColumn(
+                                                          children: [
+                                                            ShowFormula()
+                                                                .stockWireLength(),
+                                                            ShowFormula()
+                                                                .weightOutput(),
+                                                            ShowFormula()
+                                                                .lengthFormula(),
+                                                          ]),
+                                                    )
+                                                  ],
+                                                )),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    },
+                                                    child: Text("Close"),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        },
                                       ),
                                     ],
                                   ),
-                                  Text(
-                                    "Ring weight: ${stockShapeWeight.toStringAsFixed(1)} [gr]",
-                                    style:
-                                        TextStyle(fontSize: resultBoxTextSize),
-                                  ),
-                                  showOnlyCustomerLength
-                                      ? SizedBox()
-                                      : Text(
-                                          "Stock wire: ${stockShapeLength.toStringAsFixed(1)} [mm]",
-                                          style: TextStyle(
-                                              fontSize: resultBoxTextSize),
-                                        ),
-                                  InkWell(
-                                    child: Text(
-                                      'Show More',
-                                      style: TextStyle(
-                                        color: Colors.blue,
-                                      ),
-                                    ),
-                                    onTap: () {
-                                      showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return AlertDialog(
-                                            title: Text("Steps"),
-                                            content: SingleChildScrollView(
-                                                child: Column(
-                                              children: [
-                                                Text(showSteps),
-                                                TeXView(
-                                                  child:
-                                                      TeXViewColumn(children: [
-                                                    ShowFormula()
-                                                        .stockWireLength(),
-                                                    ShowFormula()
-                                                        .weightOutput(),
-                                                    ShowFormula()
-                                                        .lengthFormula(),
-                                                  ]),
-                                                )
-                                              ],
-                                            )),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.of(context).pop();
-                                                },
-                                                child: Text("Close"),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
-                                ],
-                              ),
-                      ),
-              ],
+                                ),
+                        ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
