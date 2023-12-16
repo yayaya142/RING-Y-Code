@@ -15,5 +15,6 @@ class ShapeDataBase {
     "Square",
     "Rectangle",
     "Sheet",
+    "Hexagon",
   ];
 }
