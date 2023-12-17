@@ -108,9 +108,10 @@ class MySquare extends MyShapes {
                       contentPadding: EdgeInsets.all(textFiledPadding),
                       hintText: textFiledHintText,
                       hintStyle: TextStyle(
-                          fontSize: shapesAttributesTextSize,
-                          fontFamily: shapesInputBoxFont,
-                          color: shapesTextColor),
+                        fontSize: shapesAttributesTextSize,
+                        fontFamily: shapesInputBoxFont,
+                        color: shapesBoxHintColor,
+                      ),
                       counterText: '',
                       border: InputBorder.none,
                     ),

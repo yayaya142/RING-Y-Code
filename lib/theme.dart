@@ -8,20 +8,24 @@ class ThemeColors {
   Color secondaryBackgroundColor = Colors.blue;
 
   // fonts
-  String headLineFont = 'AkayaKanadaka';
-  String bodyFont = 'IBMPlexSans';
-  String shapesFont = 'RubikBrokenFax';
-  String shapesInputBoxFont = 'AkayaKanadaka';
-  String resultBoxFont = 'RubikBrokenFax';
+  String headLineFont = '';
+  String bodyFont = '';
+  String shapesFont = '';
+  String shapesInputBoxFont = '';
+  String resultBoxFont = '';
 
   // Text colors
   Color headLineTextColor = Colors.black;
-  Color bodyTextColor = Color.fromARGB(255, 201, 50, 24);
-  Color shapesTextColor = Colors.blue;
-  Color resultBoxTextColor = Colors.purple;
-  Color resultBoxTextVariables = Colors.green;
+  Color bodyTextColor = Colors.black;
+  Color shapesTextColor = Colors.black;
+  Color resultBoxTextColor = Colors.black;
+  Color resultBoxTextVariables = Colors.black;
+  Color shapesBoxHintColor = Colors.grey;
   // container colors
-  Color menuContainerColor = Colors.green;
-  Color shapesContainerColor = Colors.red;
-  Color resultContainerColor = Colors.blue;
+  Color menuContainerColor = Color.fromARGB(255, 233, 177, 92).withOpacity(0.5);
+  Color shapesContainerColor = const Color.fromARGB(255, 255, 255, 255);
+  Color resultContainerColor = Color.fromARGB(255, 255, 255, 255);
 }
+
+
+// const color = const Color(0xffb74093); // Second `const` is optional in assignments.

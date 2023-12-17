@@ -114,7 +114,7 @@ class MySemiCircle extends MyShapes {
                       hintStyle: TextStyle(
                           fontSize: shapesAttributesTextSize,
                           fontFamily: shapesInputBoxFont,
-                          color: shapesTextColor),
+                          color: shapesBoxHintColor),
                       counterText: '',
                       border: InputBorder.none,
                     ),

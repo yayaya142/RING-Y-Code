@@ -24,7 +24,7 @@ const double innerBoxTextSize = 17;
 const double shapesAttributesTextSize = 15;
 const double resultBoxTextSize = 14;
 // headline size and color
-const double shapeHeadlineSize = 14;
+const double shapeHeadlineSize = 20;
 
 // shapes values
 Map<String, dynamic> customerShapeData = {
@@ -483,6 +483,7 @@ class _HomeState extends State<Home> {
                               : Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Row(
                                         mainAxisAlignment:
@@ -533,6 +534,8 @@ class _HomeState extends State<Home> {
                                             width: 20,
                                           ),
                                           Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [

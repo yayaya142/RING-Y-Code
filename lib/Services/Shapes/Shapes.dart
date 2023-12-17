@@ -6,11 +6,13 @@ import 'package:or_calculator/theme.dart';
 abstract class MyShapes {
   double textFiledPadding = 7;
   double sizeBoxWidth = 15;
-  String textFiledHintText = "Enter number";
+  String textFiledHintText = "Type";
   String shapesTextFont = ThemeColors().shapesFont;
   String shapesInputBoxFont = ThemeColors().shapesInputBoxFont;
 
   Color shapesTextColor = ThemeColors().shapesTextColor;
+  Color shapesBoxHintColor = ThemeColors().shapesBoxHintColor;
+
   Color shapesContainerColor = ThemeColors().shapesContainerColor;
 
   double get thickness;
