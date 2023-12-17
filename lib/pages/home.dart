@@ -25,7 +25,6 @@ const double shapesAttributesTextSize = 15;
 const double resultBoxTextSize = 14;
 // headline size and color
 const double shapeHeadlineSize = 14;
-const Color shapeHeadlineColor = Color.fromARGB(255, 73, 5, 233);
 
 // shapes values
 Map<String, dynamic> customerShapeData = {
@@ -119,7 +118,8 @@ class _HomeState extends State<Home> {
                     'Ring Wire',
                     style: TextStyle(
                         fontSize: shapeHeadlineSize,
-                        color: shapeHeadlineColor,
+                        fontFamily: ThemeColors().headLineFont,
+                        color: ThemeColors().headLineTextColor,
                         fontWeight: FontWeight.bold),
                   ),
                   Center(
@@ -129,12 +129,12 @@ class _HomeState extends State<Home> {
                       width: MediaQuery.of(context).size.width *
                           CustomContainer().containerWidth,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(CustomContainer()
-                            .containerInnerSideBorderRadius), // Adjust the radius as needed
-                        border: Border.all(
-                          color: CustomContainer().outsideContainerColor,
-                        ),
-                      ),
+                          borderRadius: BorderRadius.circular(CustomContainer()
+                              .containerInnerSideBorderRadius), // Adjust the radius as needed
+                          border: Border.all(
+                            color: CustomContainer().outsideContainerColor,
+                          ),
+                          color: ThemeColors().menuContainerColor),
                       child: DropdownButton<String>(
                         isExpanded: true,
                         // icon: SizedBox.shrink(),
@@ -143,7 +143,10 @@ class _HomeState extends State<Home> {
                         hint: Center(
                             child: Text(
                           'Metal Type',
-                          style: TextStyle(fontSize: innerBoxTextSize),
+                          style: TextStyle(
+                              fontSize: innerBoxTextSize,
+                              color: ThemeColors().bodyTextColor,
+                              fontFamily: ThemeColors().bodyFont),
                         )), // Add a hint here
                         onChanged: (String? newValue) {
                           resetResult();
@@ -161,7 +164,10 @@ class _HomeState extends State<Home> {
                             child: Center(
                               child: Text(
                                 value,
-                                style: TextStyle(fontSize: innerBoxTextSize),
+                                style: TextStyle(
+                                    fontSize: innerBoxTextSize,
+                                    fontFamily: ThemeColors().bodyFont,
+                                    color: ThemeColors().bodyTextColor),
                               ),
                             ),
                           );
@@ -184,6 +190,7 @@ class _HomeState extends State<Home> {
                         border: Border.all(
                           color: CustomContainer().outsideContainerColor,
                         ),
+                        color: ThemeColors().menuContainerColor,
                       ),
                       child: DropdownButton<double>(
                         isExpanded: true,
@@ -193,7 +200,10 @@ class _HomeState extends State<Home> {
                         hint: Center(
                             child: Text(
                           'Size US',
-                          style: TextStyle(fontSize: innerBoxTextSize),
+                          style: TextStyle(
+                              fontSize: innerBoxTextSize,
+                              color: ThemeColors().bodyTextColor,
+                              fontFamily: ThemeColors().bodyFont),
                         )), // Add a hint here
 
                         items: SizeOptionsDropDown.sizes.map((size) {
@@ -202,7 +212,10 @@ class _HomeState extends State<Home> {
                             child: Center(
                               child: Text(
                                 "${size.toString()}  US",
-                                style: TextStyle(fontSize: innerBoxTextSize),
+                                style: TextStyle(
+                                    fontSize: innerBoxTextSize,
+                                    color: ThemeColors().bodyTextColor,
+                                    fontFamily: ThemeColors().bodyFont),
                               ),
                             ), // displayed text
                           );
@@ -233,6 +246,7 @@ class _HomeState extends State<Home> {
                       border: Border.all(
                         color: CustomContainer().outsideContainerColor,
                       ),
+                      color: ThemeColors().menuContainerColor,
                     ),
                     child: DropdownButton<String>(
                       isExpanded: true,
@@ -242,7 +256,10 @@ class _HomeState extends State<Home> {
                       hint: Center(
                           child: Text(
                         'Shape',
-                        style: TextStyle(fontSize: innerBoxTextSize),
+                        style: TextStyle(
+                            fontSize: innerBoxTextSize,
+                            color: ThemeColors().bodyTextColor,
+                            fontFamily: ThemeColors().bodyFont),
                       )), // Add a hint here
                       onChanged: (String? newValue) {
                         setState(() {
@@ -264,7 +281,10 @@ class _HomeState extends State<Home> {
                           value: value,
                           child: Center(
                             child: Text(value,
-                                style: TextStyle(fontSize: innerBoxTextSize)),
+                                style: TextStyle(
+                                    fontSize: innerBoxTextSize,
+                                    color: ThemeColors().bodyTextColor,
+                                    fontFamily: ThemeColors().bodyFont)),
                           ),
                         );
                       }).toList(),
@@ -289,7 +309,8 @@ class _HomeState extends State<Home> {
                     'Stock Wire',
                     style: TextStyle(
                         fontSize: shapeHeadlineSize,
-                        color: shapeHeadlineColor,
+                        color: ThemeColors().headLineTextColor,
+                        fontFamily: ThemeColors().headLineFont,
                         fontWeight: FontWeight.bold),
                   ),
                   Container(
@@ -303,6 +324,7 @@ class _HomeState extends State<Home> {
                       border: Border.all(
                         color: CustomContainer().outsideContainerColor,
                       ),
+                      color: ThemeColors().menuContainerColor,
                     ),
                     child: DropdownButton<String>(
                       isExpanded: true,
@@ -310,10 +332,11 @@ class _HomeState extends State<Home> {
                       underline: Container(),
                       value: selectedShapeStock,
                       hint: Center(
-                        child: Text(
-                          'Shape',
-                          style: TextStyle(fontSize: innerBoxTextSize),
-                        ),
+                        child: Text('Shape',
+                            style: TextStyle(
+                                fontSize: innerBoxTextSize,
+                                fontFamily: ThemeColors().bodyFont,
+                                color: ThemeColors().bodyTextColor)),
                       ), // Add a hint here
                       onChanged: (String? newValue) {
                         resetShapeData(false);
@@ -333,7 +356,10 @@ class _HomeState extends State<Home> {
                           value: value,
                           child: Center(
                             child: Text(value,
-                                style: TextStyle(fontSize: innerBoxTextSize)),
+                                style: TextStyle(
+                                    fontSize: innerBoxTextSize,
+                                    fontFamily: ThemeColors().bodyFont,
+                                    color: ThemeColors().bodyTextColor)),
                           ),
                         );
                       }).toList(),
@@ -445,7 +471,7 @@ class _HomeState extends State<Home> {
                             border: Border.all(
                               color: CustomContainer().outsideContainerColor,
                             ),
-                            color: CustomContainer().insideContainerColor,
+                            color: ThemeColors().resultContainerColor,
                           ),
                           child: resultError
                               ? Center(
@@ -470,13 +496,21 @@ class _HomeState extends State<Home> {
                                                   "Ring length:",
                                                   style: TextStyle(
                                                       fontSize:
-                                                          resultBoxTextSize),
+                                                          resultBoxTextSize,
+                                                      color: ThemeColors()
+                                                          .resultBoxTextColor,
+                                                      fontFamily: ThemeColors()
+                                                          .resultBoxFont),
                                                 ),
                                                 Text(
                                                   'Ring weight:',
                                                   style: TextStyle(
                                                       fontSize:
-                                                          resultBoxTextSize),
+                                                          resultBoxTextSize,
+                                                      color: ThemeColors()
+                                                          .resultBoxTextColor,
+                                                      fontFamily: ThemeColors()
+                                                          .resultBoxFont),
                                                 ),
                                                 SizedBox(
                                                   height: 5,
@@ -487,7 +521,12 @@ class _HomeState extends State<Home> {
                                                         'Stock wire:',
                                                         style: TextStyle(
                                                             fontSize:
-                                                                resultBoxTextSize),
+                                                                resultBoxTextSize,
+                                                            color: ThemeColors()
+                                                                .resultBoxTextColor,
+                                                            fontFamily:
+                                                                ThemeColors()
+                                                                    .resultBoxFont),
                                                       ),
                                               ]),
                                           SizedBox(
@@ -501,10 +540,22 @@ class _HomeState extends State<Home> {
                                                   '${customerShapeLength.toStringAsFixed(1)} [mm]',
                                                   style: TextStyle(
                                                       fontSize:
-                                                          resultBoxTextSize),
+                                                          resultBoxTextSize,
+                                                      color: ThemeColors()
+                                                          .resultBoxTextVariables,
+                                                      fontFamily: ThemeColors()
+                                                          .resultBoxFont),
                                                 ),
                                                 Text(
-                                                    '${stockShapeWeight.toStringAsFixed(1)} [gr]'),
+                                                  '${stockShapeWeight.toStringAsFixed(1)} [gr]',
+                                                  style: TextStyle(
+                                                      fontSize:
+                                                          resultBoxTextSize,
+                                                      color: ThemeColors()
+                                                          .resultBoxTextVariables,
+                                                      fontFamily: ThemeColors()
+                                                          .resultBoxFont),
+                                                ),
                                                 SizedBox(
                                                   height: 5,
                                                 ),
@@ -514,7 +565,12 @@ class _HomeState extends State<Home> {
                                                         '${stockShapeLength.toStringAsFixed(1)} [mm]',
                                                         style: TextStyle(
                                                             fontSize:
-                                                                resultBoxTextSize),
+                                                                resultBoxTextSize,
+                                                            color: ThemeColors()
+                                                                .resultBoxTextVariables,
+                                                            fontFamily:
+                                                                ThemeColors()
+                                                                    .resultBoxFont),
                                                       ),
                                               ]),
                                         ],

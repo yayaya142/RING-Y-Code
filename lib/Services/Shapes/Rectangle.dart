@@ -57,16 +57,19 @@ class MyRectangle extends MyShapes {
                         CustomContainer().containerWidth /
                         CustomContainer().containerWidthForShapesType,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(CustomContainer()
-                          .containerInnerSideBorderRadius), // Adjust the radius as needed
-                      border: Border.all(
-                        color: CustomContainer().outsideContainerColor,
-                      ),
-                    ),
+                        borderRadius: BorderRadius.circular(CustomContainer()
+                            .containerInnerSideBorderRadius), // Adjust the radius as needed
+                        border: Border.all(
+                          color: CustomContainer().outsideContainerColor,
+                        ),
+                        color: shapesContainerColor),
                     child: Center(
                         child: Text(
                       "Width",
-                      style: TextStyle(fontSize: shapesAttributesTextSize),
+                      style: TextStyle(
+                          fontSize: shapesAttributesTextSize,
+                          fontFamily: shapesTextFont,
+                          color: shapesTextColor),
                     )),
                   ),
                   Container(
@@ -77,12 +80,12 @@ class MyRectangle extends MyShapes {
                         CustomContainer().containerWidth /
                         CustomContainer().containerWidthForShapesData,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(CustomContainer()
-                          .containerInnerSideBorderRadius), // Adjust the radius as needed
-                      border: Border.all(
-                        color: CustomContainer().outsideContainerColor,
-                      ),
-                    ),
+                        borderRadius: BorderRadius.circular(CustomContainer()
+                            .containerInnerSideBorderRadius), // Adjust the radius as needed
+                        border: Border.all(
+                          color: CustomContainer().outsideContainerColor,
+                        ),
+                        color: shapesContainerColor),
                     child: Row(
                       children: [
                         Expanded(
@@ -95,8 +98,10 @@ class MyRectangle extends MyShapes {
                                   RegExp(r'^\d+\.?\d*')),
                               // You can add more formatters if needed
                             ],
-                            style:
-                                TextStyle(fontSize: shapesAttributesTextSize),
+                            style: TextStyle(
+                                fontSize: shapesAttributesTextSize,
+                                fontFamily: shapesInputBoxFont,
+                                color: shapesTextColor),
                             textAlign: TextAlign.center,
                             maxLength: 8,
                             onChanged: (widthTextFiled) {
@@ -111,8 +116,10 @@ class MyRectangle extends MyShapes {
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.all(textFiledPadding),
                               hintText: textFiledHintText,
-                              hintStyle:
-                                  TextStyle(fontSize: shapesAttributesTextSize),
+                              hintStyle: TextStyle(
+                                  fontSize: shapesAttributesTextSize,
+                                  fontFamily: shapesInputBoxFont,
+                                  color: shapesTextColor),
                               counterText: '',
                               border: InputBorder.none,
                             ),
@@ -120,7 +127,10 @@ class MyRectangle extends MyShapes {
                         ),
                         Text(
                           "mm",
-                          style: TextStyle(fontSize: shapesAttributesTextSize),
+                          style: TextStyle(
+                              fontSize: shapesAttributesTextSize,
+                              fontFamily: shapesTextFont,
+                              color: shapesTextColor),
                         ),
                         SizedBox(width: sizeBoxWidth),
                       ],
@@ -148,11 +158,15 @@ class MyRectangle extends MyShapes {
                       border: Border.all(
                         color: CustomContainer().outsideContainerColor,
                       ),
+                      color: shapesContainerColor,
                     ),
                     child: Center(
                         child: Text(
                       "Thickness",
-                      style: TextStyle(fontSize: shapesAttributesTextSize),
+                      style: TextStyle(
+                          fontSize: shapesAttributesTextSize,
+                          fontFamily: shapesTextFont,
+                          color: shapesTextColor),
                     )),
                   ),
                   Container(
@@ -168,6 +182,7 @@ class MyRectangle extends MyShapes {
                       border: Border.all(
                         color: CustomContainer().outsideContainerColor,
                       ),
+                      color: shapesContainerColor,
                     ),
                     child: Row(
                       children: [
@@ -181,8 +196,10 @@ class MyRectangle extends MyShapes {
                                   RegExp(r'^\d+\.?\d*')),
                               // You can add more formatters if needed
                             ],
-                            style:
-                                TextStyle(fontSize: shapesAttributesTextSize),
+                            style: TextStyle(
+                                fontSize: shapesAttributesTextSize,
+                                fontFamily: shapesInputBoxFont,
+                                color: shapesTextColor),
                             textAlign: TextAlign.center,
                             maxLength: 8,
                             onChanged: (thicknessTextFiled) {
@@ -197,8 +214,10 @@ class MyRectangle extends MyShapes {
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.all(textFiledPadding),
                               hintText: textFiledHintText,
-                              hintStyle:
-                                  TextStyle(fontSize: shapesAttributesTextSize),
+                              hintStyle: TextStyle(
+                                  fontSize: shapesAttributesTextSize,
+                                  fontFamily: shapesInputBoxFont,
+                                  color: shapesTextColor),
                               counterText: '',
                               border: InputBorder.none,
                             ),
@@ -206,7 +225,10 @@ class MyRectangle extends MyShapes {
                         ),
                         Text(
                           "mm",
-                          style: TextStyle(fontSize: shapesAttributesTextSize),
+                          style: TextStyle(
+                              fontSize: shapesAttributesTextSize,
+                              fontFamily: shapesTextFont,
+                              color: shapesTextColor),
                         ),
                         SizedBox(width: sizeBoxWidth),
                       ],

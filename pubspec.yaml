@@ -47,3 +47,16 @@ flutter:
 # my assets folder
   assets:
     - assets/background_image.png
+  fonts:
+      # headline
+    - family: AkayaKanadaka
+      fonts:
+        - asset: assets/AkayaKanadaka-Regular.ttf
+      # body
+    - family: IBMPlexSans
+      fonts:
+        - asset: assets/IBMPlexSans-Regular.ttf
+      # result
+    - family: RubikBrokenFax
+      fonts:
+        - asset: assets/RubikBrokenFax-Regular.ttf

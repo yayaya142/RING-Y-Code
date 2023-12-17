@@ -50,16 +50,19 @@ class MyCircle extends MyShapes {
                 CustomContainer().containerWidth /
                 CustomContainer().containerWidthForShapesType,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(CustomContainer()
-                  .containerInnerSideBorderRadius), // Adjust the radius as needed
-              border: Border.all(
-                color: CustomContainer().outsideContainerColor,
-              ),
-            ),
+                borderRadius: BorderRadius.circular(CustomContainer()
+                    .containerInnerSideBorderRadius), // Adjust the radius as needed
+                border: Border.all(
+                  color: CustomContainer().outsideContainerColor,
+                ),
+                color: shapesContainerColor),
             child: Center(
                 child: Text(
               "Diameter",
-              style: TextStyle(fontSize: shapesAttributesTextSize),
+              style: TextStyle(
+                  fontSize: shapesAttributesTextSize,
+                  fontFamily: shapesTextFont,
+                  color: shapesTextColor),
             )),
           ),
           Container(
@@ -70,12 +73,12 @@ class MyCircle extends MyShapes {
                 CustomContainer().containerWidth /
                 CustomContainer().containerWidthForShapesData,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(CustomContainer()
-                  .containerInnerSideBorderRadius), // Adjust the radius as needed
-              border: Border.all(
-                color: CustomContainer().outsideContainerColor,
-              ),
-            ),
+                borderRadius: BorderRadius.circular(CustomContainer()
+                    .containerInnerSideBorderRadius), // Adjust the radius as needed
+                border: Border.all(
+                  color: CustomContainer().outsideContainerColor,
+                ),
+                color: shapesContainerColor),
             child: Row(
               children: [
                 Expanded(
@@ -87,7 +90,10 @@ class MyCircle extends MyShapes {
                       FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d*')),
                       // You can add more formatters if needed
                     ],
-                    style: TextStyle(fontSize: shapesAttributesTextSize),
+                    style: TextStyle(
+                        fontSize: shapesAttributesTextSize,
+                        fontFamily: shapesInputBoxFont,
+                        color: shapesTextColor),
                     textAlign: TextAlign.center,
                     maxLength: 8,
                     onChanged: (diameterTextFiled) {
@@ -102,7 +108,10 @@ class MyCircle extends MyShapes {
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.all(textFiledPadding),
                       hintText: textFiledHintText,
-                      hintStyle: TextStyle(fontSize: shapesAttributesTextSize),
+                      hintStyle: TextStyle(
+                          fontSize: shapesAttributesTextSize,
+                          fontFamily: shapesInputBoxFont,
+                          color: shapesTextColor),
                       counterText: '',
                       border: InputBorder.none,
                     ),
@@ -110,7 +119,10 @@ class MyCircle extends MyShapes {
                 ),
                 Text(
                   "mm",
-                  style: TextStyle(fontSize: shapesAttributesTextSize),
+                  style: TextStyle(
+                      fontSize: shapesAttributesTextSize,
+                      fontFamily: shapesTextFont,
+                      color: shapesTextColor),
                 ),
                 SizedBox(width: sizeBoxWidth),
               ],

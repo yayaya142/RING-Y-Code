@@ -53,11 +53,15 @@ class MySquare extends MyShapes {
               border: Border.all(
                 color: CustomContainer().outsideContainerColor,
               ),
+              color: shapesContainerColor,
             ),
             child: Center(
                 child: Text(
               "Width",
-              style: TextStyle(fontSize: shapesAttributesTextSize),
+              style: TextStyle(
+                  fontSize: shapesAttributesTextSize,
+                  fontFamily: shapesTextFont,
+                  color: shapesTextColor),
             )),
           ),
           Container(
@@ -73,6 +77,7 @@ class MySquare extends MyShapes {
               border: Border.all(
                 color: CustomContainer().outsideContainerColor,
               ),
+              color: shapesContainerColor,
             ),
             child: Row(
               children: [
@@ -85,7 +90,10 @@ class MySquare extends MyShapes {
                       FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d*')),
                       // You can add more formatters if needed
                     ],
-                    style: TextStyle(fontSize: shapesAttributesTextSize),
+                    style: TextStyle(
+                        fontSize: shapesAttributesTextSize,
+                        fontFamily: shapesInputBoxFont,
+                        color: shapesTextColor),
                     textAlign: TextAlign.center,
                     maxLength: 8,
                     onChanged: (widthTextFiled) {
@@ -99,7 +107,10 @@ class MySquare extends MyShapes {
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.all(textFiledPadding),
                       hintText: textFiledHintText,
-                      hintStyle: TextStyle(fontSize: shapesAttributesTextSize),
+                      hintStyle: TextStyle(
+                          fontSize: shapesAttributesTextSize,
+                          fontFamily: shapesInputBoxFont,
+                          color: shapesTextColor),
                       counterText: '',
                       border: InputBorder.none,
                     ),
@@ -107,7 +118,10 @@ class MySquare extends MyShapes {
                 ),
                 Text(
                   "mm",
-                  style: TextStyle(fontSize: shapesAttributesTextSize),
+                  style: TextStyle(
+                      fontSize: shapesAttributesTextSize,
+                      fontFamily: shapesTextFont,
+                      color: shapesTextColor),
                 ),
                 SizedBox(width: sizeBoxWidth),
               ],

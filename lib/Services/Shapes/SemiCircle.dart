@@ -56,11 +56,15 @@ class MySemiCircle extends MyShapes {
               border: Border.all(
                 color: CustomContainer().outsideContainerColor,
               ),
+              color: shapesContainerColor,
             ),
             child: Center(
                 child: Text(
               "Diameter",
-              style: TextStyle(fontSize: shapesAttributesTextSize),
+              style: TextStyle(
+                  fontSize: shapesAttributesTextSize,
+                  fontFamily: shapesTextFont,
+                  color: shapesTextColor),
             )),
           ),
           Container(
@@ -76,6 +80,7 @@ class MySemiCircle extends MyShapes {
               border: Border.all(
                 color: CustomContainer().outsideContainerColor,
               ),
+              color: shapesContainerColor,
             ),
             child: Row(
               children: [
@@ -88,7 +93,10 @@ class MySemiCircle extends MyShapes {
                       FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d*')),
                       // You can add more formatters if needed
                     ],
-                    style: TextStyle(fontSize: shapesAttributesTextSize),
+                    style: TextStyle(
+                        fontSize: shapesAttributesTextSize,
+                        fontFamily: shapesInputBoxFont,
+                        color: shapesTextColor),
                     textAlign: TextAlign.center,
                     maxLength: 8,
                     onChanged: (diameterTextFiled) {
@@ -103,7 +111,10 @@ class MySemiCircle extends MyShapes {
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.all(textFiledPadding),
                       hintText: textFiledHintText,
-                      hintStyle: TextStyle(fontSize: shapesAttributesTextSize),
+                      hintStyle: TextStyle(
+                          fontSize: shapesAttributesTextSize,
+                          fontFamily: shapesInputBoxFont,
+                          color: shapesTextColor),
                       counterText: '',
                       border: InputBorder.none,
                     ),
@@ -111,7 +122,10 @@ class MySemiCircle extends MyShapes {
                 ),
                 Text(
                   "mm",
-                  style: TextStyle(fontSize: shapesAttributesTextSize),
+                  style: TextStyle(
+                      fontSize: shapesAttributesTextSize,
+                      fontFamily: shapesTextFont,
+                      color: shapesTextColor),
                 ),
                 SizedBox(width: sizeBoxWidth),
               ],

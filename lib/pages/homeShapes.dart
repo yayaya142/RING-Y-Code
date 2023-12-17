@@ -5,7 +5,6 @@ import 'package:or_calculator/Services/Shapes/Hexagon.dart';
 import 'package:or_calculator/Services/Shapes/Rectangle.dart';
 import 'package:or_calculator/Services/Shapes/SemiCircle.dart';
 import 'package:or_calculator/Services/Shapes/Shapes.dart';
-import 'package:or_calculator/Services/Shapes/Sheet.dart';
 import 'package:or_calculator/Services/Shapes/Square.dart';
 
 class CreateShapeObject {
@@ -20,8 +19,6 @@ class CreateShapeObject {
         return MyRectangle(width, thickness);
       case 'Square':
         return MySquare(width);
-      case 'Sheet':
-        return MySheet(width, thickness);
       case 'Hexagon':
         return MyHexagon(width);
       default:
