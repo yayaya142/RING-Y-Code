@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, prefer_adjacent_string_concatenation
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_tex/flutter_tex.dart';
 import 'package:or_calculator/Services/Shapes/Shapes.dart';
 import 'dart:math';
 import 'package:or_calculator/pages/Custom_container.dart';
@@ -31,6 +32,20 @@ class MyCircle extends MyShapes {
   @override
   void clearTextField() {
     diameterTextFiled.clear();
+  }
+
+  @override
+  TeXViewDocument showAreaFunctionLatex(int areaNumber) {
+    String result = r"""$$A_""" +
+        "{$areaNumber}" +
+        r""" = \pi \cdot \left(\frac{D}{2}\right)^2$$""";
+    return TeXViewDocument(result);
+  }
+
+  @override
+  String showShapeInfo() {
+    String info = "Circle $diameter [mm]";
+    return info;
   }
 
   @override

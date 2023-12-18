@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_tex/flutter_tex.dart';
 import 'package:or_calculator/Services/Shapes/Shapes.dart';
 import 'package:or_calculator/pages/Custom_container.dart';
 import 'package:or_calculator/pages/home.dart';
@@ -35,6 +36,18 @@ class MyRectangle extends MyShapes {
   void clearTextField() {
     widthTextFiled.clear();
     thicknessTextFiled.clear();
+  }
+
+  @override
+  TeXViewDocument showAreaFunctionLatex(int areaNumber) {
+    String result = r"""$$A_""" + "{$areaNumber}" + r""" = a \cdot b$$""";
+    return TeXViewDocument(result);
+  }
+
+  @override
+  String showShapeInfo() {
+    String info = "Rectangle $sideA x $sideB [mm]";
+    return info;
   }
 
   @override

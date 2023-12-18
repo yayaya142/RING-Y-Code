@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_tex/flutter_tex.dart';
 import 'package:or_calculator/Services/Shapes/Shapes.dart';
 import 'package:or_calculator/pages/Custom_container.dart';
 import 'package:or_calculator/pages/home.dart';
@@ -32,6 +33,20 @@ class MyHexagon extends MyShapes {
   @override
   void clearTextField() {
     ribTextFiled.clear();
+  }
+
+  @override
+  TeXViewDocument showAreaFunctionLatex(int areaNumber) {
+    String result = r"""$$A_""" +
+        "{$areaNumber}" +
+        r""" = \frac{3\sqrt{3}}{2} \cdot a^2$$""";
+    return TeXViewDocument(result);
+  }
+
+  @override
+  String showShapeInfo() {
+    String info = "Hexagon $rib [mm]";
+    return info;
   }
 
   @override

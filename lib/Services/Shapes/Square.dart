@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_this, prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_tex/flutter_tex.dart';
 import 'package:or_calculator/Services/Shapes/Shapes.dart';
 import 'package:or_calculator/pages/Custom_container.dart';
 import 'package:or_calculator/pages/home.dart';
@@ -29,6 +30,18 @@ class MySquare extends MyShapes {
   @override
   void clearTextField() {
     widthTextFiled.clear();
+  }
+
+  @override
+  TeXViewDocument showAreaFunctionLatex(int areaNumber) {
+    String result = r"""$$A_""" + "{$areaNumber}" + r""" = a^2$$""";
+    return TeXViewDocument(result);
+  }
+
+  @override
+  String showShapeInfo() {
+    String info = "Square $width [mm]";
+    return info;
   }
 
   @override

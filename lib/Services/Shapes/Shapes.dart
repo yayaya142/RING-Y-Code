@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_tex/flutter_tex.dart';
 import 'package:or_calculator/theme.dart';
 
 abstract class MyShapes {
@@ -26,6 +27,10 @@ abstract class MyShapes {
   }
 
   Widget buildWidget(BuildContext context, bool isCustomerBuild);
+  // decide if to show it as A1 or A2
+  TeXViewDocument showAreaFunctionLatex(int areaNumber);
+
+  String showShapeInfo();
 
   void clearTextField();
 }

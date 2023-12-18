@@ -611,17 +611,26 @@ class _HomeState extends State<Home> {
                                                     child: Column(
                                                   children: [
                                                     Text(showSteps),
-                                                    TeXView(
-                                                      child: TeXViewColumn(
-                                                          children: [
-                                                            ShowFormula()
-                                                                .stockWireLength(),
-                                                            ShowFormula()
-                                                                .weightOutput(),
-                                                            ShowFormula()
-                                                                .lengthFormula(),
-                                                          ]),
-                                                    )
+                                                    showOnlyCustomerLength
+                                                        ? SizedBox()
+                                                        : TeXView(
+                                                            child:
+                                                                TeXViewColumn(
+                                                                    children: [
+                                                                  customerObjectShapeGUI
+                                                                      .showAreaFunctionLatex(
+                                                                          1),
+                                                                  stockObjectShapeGUI
+                                                                      .showAreaFunctionLatex(
+                                                                          2),
+                                                                  ShowFormula()
+                                                                      .stockWireLength(),
+                                                                  ShowFormula()
+                                                                      .weightOutput(),
+                                                                  ShowFormula()
+                                                                      .lengthFormula(),
+                                                                ]),
+                                                          )
                                                   ],
                                                 )),
                                                 actions: [

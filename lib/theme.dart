@@ -32,6 +32,8 @@ class ThemeColors {
   Color calculatorButtonColor = Colors.grey;
   Color calculatorButtonBorder = Colors.black;
   Color calculatorButtonTextColor = Colors.black;
+  // Show more button
+  
 }
 
 

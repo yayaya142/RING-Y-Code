@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_tex/src/widgets/document.dart';
 import 'package:or_calculator/Services/Shapes/Shapes.dart';
 
 class DefaultShape extends MyShapes {
@@ -21,4 +22,14 @@ class DefaultShape extends MyShapes {
 
   @override
   void clearTextField() {}
+  @override
+  String showShapeInfo() {
+    return "";
+  }
+
+  @override
+  TeXViewDocument showAreaFunctionLatex(int areaNumber) {
+    // TODO: implement showAreaFunctionLatex
+    throw UnimplementedError();
+  }
 }
