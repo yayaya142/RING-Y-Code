@@ -12,6 +12,8 @@ abstract class MyShapes {
 
   Color shapesTextColor = ThemeColors().shapesTextColor;
   Color shapesBoxHintColor = ThemeColors().shapesBoxHintColor;
+  Color shapesInputBoxContainerColor =
+      ThemeColors().shapesInputBoxContainerColor;
 
   Color shapesContainerColor = ThemeColors().shapesContainerColor;
 

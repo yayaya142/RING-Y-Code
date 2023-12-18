@@ -22,7 +22,7 @@ const String resultBoxSpacing = "     ";
 // Page Text
 const double innerBoxTextSize = 17;
 const double shapesAttributesTextSize = 15;
-const double resultBoxTextSize = 14;
+const double resultBoxTextSize = 18.5;
 // headline size and color
 const double shapeHeadlineSize = 20;
 
@@ -95,19 +95,21 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Ring Wire Converter",
+          "RING'Y",
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: ThemeColors().appBarColor,
         centerTitle: true,
       ),
       body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/background_image.png'),
-            fit: BoxFit.fill,
-          ),
-        ),
+        // decoration:
+        // BoxDecoration(
+        // image: DecorationImage(
+        //   image: AssetImage('assets/background_image1.png'),
+        //   fit: BoxFit.fill,
+        // ),
+        // ),
+        color: ThemeColors().backgroundContainerColor,
         child: ListView(
           children: [
             Padding(
@@ -296,12 +298,12 @@ class _HomeState extends State<Home> {
                   customerObjectShapeGUI.buildWidget(context, true),
                   Center(
                     child: Transform.rotate(
-                      angle: 3.14 / 2,
+                      angle: 3.14 / 1,
                       child: Icon(
-                        Icons.forward,
+                        Icons.keyboard_double_arrow_up,
                         size: MediaQuery.of(context).size.width *
                             0.12, // Adjust the size as needed
-                        color: Colors.blue, // Change the color if desired
+                        color: Colors.black, // Change the color if desired
                       ),
                     ),
                   ),
@@ -446,8 +448,17 @@ class _HomeState extends State<Home> {
                         }
                       });
                     },
-                    child: Text('Calculate', style: TextStyle(fontSize: 25)),
+                    child: Text('Calculate',
+                        style: TextStyle(
+                            fontSize: 25,
+                            color: ThemeColors().calculatorButtonTextColor)),
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: ThemeColors().calculatorButtonColor,
+                      side: BorderSide(
+                        color: ThemeColors().calculatorButtonBorder,
+                      ),
+                      elevation: 6,
+                      shadowColor: Colors.grey.withOpacity(0.5),
                       minimumSize: Size(
                           MediaQuery.of(context).size.width *
                               calculateButtonWidth,
@@ -496,22 +507,22 @@ class _HomeState extends State<Home> {
                                                 Text(
                                                   "Ring length:",
                                                   style: TextStyle(
-                                                      fontSize:
-                                                          resultBoxTextSize,
-                                                      color: ThemeColors()
-                                                          .resultBoxTextColor,
-                                                      fontFamily: ThemeColors()
-                                                          .resultBoxFont),
+                                                    fontSize: resultBoxTextSize,
+                                                    color: ThemeColors()
+                                                        .resultBoxTextColor,
+                                                    fontFamily: ThemeColors()
+                                                        .resultBoxFont,
+                                                  ), // Adjust the radius as needed
                                                 ),
                                                 Text(
                                                   'Ring weight:',
                                                   style: TextStyle(
-                                                      fontSize:
-                                                          resultBoxTextSize,
-                                                      color: ThemeColors()
-                                                          .resultBoxTextColor,
-                                                      fontFamily: ThemeColors()
-                                                          .resultBoxFont),
+                                                    fontSize: resultBoxTextSize,
+                                                    color: ThemeColors()
+                                                        .resultBoxTextColor,
+                                                    fontFamily: ThemeColors()
+                                                        .resultBoxFont,
+                                                  ),
                                                 ),
                                                 SizedBox(
                                                   height: 5,
@@ -521,13 +532,14 @@ class _HomeState extends State<Home> {
                                                     : Text(
                                                         'Stock wire:',
                                                         style: TextStyle(
-                                                            fontSize:
-                                                                resultBoxTextSize,
-                                                            color: ThemeColors()
-                                                                .resultBoxTextColor,
-                                                            fontFamily:
-                                                                ThemeColors()
-                                                                    .resultBoxFont),
+                                                          fontSize:
+                                                              resultBoxTextSize,
+                                                          color: ThemeColors()
+                                                              .resultBoxTextColor,
+                                                          fontFamily:
+                                                              ThemeColors()
+                                                                  .resultBoxFont,
+                                                        ),
                                                       ),
                                               ]),
                                           SizedBox(
@@ -542,22 +554,22 @@ class _HomeState extends State<Home> {
                                                 Text(
                                                   '${customerShapeLength.toStringAsFixed(1)} [mm]',
                                                   style: TextStyle(
-                                                      fontSize:
-                                                          resultBoxTextSize,
-                                                      color: ThemeColors()
-                                                          .resultBoxTextVariables,
-                                                      fontFamily: ThemeColors()
-                                                          .resultBoxFont),
+                                                    fontSize: resultBoxTextSize,
+                                                    color: ThemeColors()
+                                                        .resultBoxTextVariables,
+                                                    fontFamily: ThemeColors()
+                                                        .resultBoxFont,
+                                                  ),
                                                 ),
                                                 Text(
                                                   '${stockShapeWeight.toStringAsFixed(1)} [gr]',
                                                   style: TextStyle(
-                                                      fontSize:
-                                                          resultBoxTextSize,
-                                                      color: ThemeColors()
-                                                          .resultBoxTextVariables,
-                                                      fontFamily: ThemeColors()
-                                                          .resultBoxFont),
+                                                    fontSize: resultBoxTextSize,
+                                                    color: ThemeColors()
+                                                        .resultBoxTextVariables,
+                                                    fontFamily: ThemeColors()
+                                                        .resultBoxFont,
+                                                  ),
                                                 ),
                                                 SizedBox(
                                                   height: 5,
@@ -567,16 +579,20 @@ class _HomeState extends State<Home> {
                                                     : Text(
                                                         '${stockShapeLength.toStringAsFixed(1)} [mm]',
                                                         style: TextStyle(
-                                                            fontSize:
-                                                                resultBoxTextSize,
-                                                            color: ThemeColors()
-                                                                .resultBoxTextVariables,
-                                                            fontFamily:
-                                                                ThemeColors()
-                                                                    .resultBoxFont),
+                                                          fontSize:
+                                                              resultBoxTextSize,
+                                                          color: ThemeColors()
+                                                              .resultBoxTextVariables,
+                                                          fontFamily:
+                                                              ThemeColors()
+                                                                  .resultBoxFont,
+                                                        ),
                                                       ),
                                               ]),
                                         ],
+                                      ),
+                                      SizedBox(
+                                        height: 8,
                                       ),
                                       InkWell(
                                         child: Text(

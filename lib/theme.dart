@@ -6,13 +6,13 @@ class ThemeColors {
 // body colors
   Color primaryBackgroundColor = Color(0xff7a6161);
   Color secondaryBackgroundColor = Colors.blue;
-
+  Color backgroundContainerColor = Colors.grey[300]!;
   // fonts
-  String headLineFont = '';
-  String bodyFont = '';
-  String shapesFont = '';
-  String shapesInputBoxFont = '';
-  String resultBoxFont = '';
+  String headLineFont = 'Poppins';
+  String bodyFont = 'Poppins';
+  String shapesFont = 'Poppins';
+  String shapesInputBoxFont = 'Poppins';
+  String resultBoxFont = 'Poppins';
 
   // Text colors
   Color headLineTextColor = Colors.black;
@@ -20,11 +20,18 @@ class ThemeColors {
   Color shapesTextColor = Colors.black;
   Color resultBoxTextColor = Colors.black;
   Color resultBoxTextVariables = Colors.black;
-  Color shapesBoxHintColor = Colors.grey;
+  Color shapesBoxHintColor = Colors.black.withOpacity(0.5);
+
   // container colors
-  Color menuContainerColor = Color.fromARGB(255, 233, 177, 92).withOpacity(0.5);
-  Color shapesContainerColor = const Color.fromARGB(255, 255, 255, 255);
-  Color resultContainerColor = Color.fromARGB(255, 255, 255, 255);
+  Color menuContainerColor = Color(0xffFFDE92);
+  Color shapesContainerColor = Colors.grey[400]!;
+  Color shapesInputBoxContainerColor = Colors.grey[400]!;
+  Color resultContainerColor = Color(0xffFFDE92);
+
+  //  calculator button colors
+  Color calculatorButtonColor = Colors.grey;
+  Color calculatorButtonBorder = Colors.black;
+  Color calculatorButtonTextColor = Colors.black;
 }
 
 

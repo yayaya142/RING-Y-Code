@@ -49,14 +49,14 @@ flutter:
     - assets/background_image.png
   fonts:
       # headline
-    - family: AkayaKanadaka
+    - family: Poppins
       fonts:
-        - asset: assets/AkayaKanadaka-Regular.ttf
+        - asset: assets/Poppins-Regular.ttf
       # body
-    - family: IBMPlexSans
+    - family: Poppins
       fonts:
-        - asset: assets/IBMPlexSans-Regular.ttf
+        - asset: assets/Poppins-Regular.ttf
       # result
-    - family: RubikBrokenFax
+    - family: Poppins-Regular.ttf
       fonts:
-        - asset: assets/RubikBrokenFax-Regular.ttf
+        - asset: assets/Poppins-Regular.ttf

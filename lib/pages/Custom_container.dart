@@ -20,7 +20,7 @@ class CustomContainer {
 
   // container size result
   double containerWidthForResult = 0.8;
-  double containerHeightForResult = 0.16;
+  double containerHeightForResult = 0.2;
   double containerOutsideBorderRadiusForResult = 40;
 
 // Pages colors

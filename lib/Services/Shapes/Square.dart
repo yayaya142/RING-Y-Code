@@ -77,7 +77,7 @@ class MySquare extends MyShapes {
               border: Border.all(
                 color: CustomContainer().outsideContainerColor,
               ),
-              color: shapesContainerColor,
+              color: shapesInputBoxContainerColor,
             ),
             child: Row(
               children: [
