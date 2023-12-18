@@ -23,6 +23,7 @@ class Calculator {
     double stockShapeVolume =
         stockShape.calculateVolume(stockShapeArea, stockShapeLength);
 
+    double innerDiameter = TableOfLengthAPI().getInnerDiameter(size);
     // check if solution make sense
     if (customerShapeArea <= 0 || customerShapeVolume <= 0) {
       return ["Error", -1.0, -1.0, -1.0];
@@ -30,14 +31,17 @@ class Calculator {
 
     // write steps
     // write customer steps
-    String formatSpaces = "         ";
-    showSteps.write("Ring wire:\n");
+    String formatSpaces = "•         ";
+    showSteps.write("Ring wire: ${customerShape.showShapeInfo()}\n");
     showSteps.write(
         "$formatSpaces Length = ${customerShapeLength.toStringAsFixed(1)} [mm]\n");
     showSteps.write(
         "$formatSpaces Cross section = ${customerShapeArea.toStringAsFixed(1)} [mm^2]\n");
     showSteps.write(
-        "$formatSpaces Weight = ${customerShapeWeight.toStringAsFixed(1)} [gr]\n\n");
+        "$formatSpaces Weight = ${customerShapeWeight.toStringAsFixed(1)} [gr]\n");
+    showSteps.write(
+        "$formatSpaces Inner diameter = ${innerDiameter.toStringAsFixed(2)} [mm]\n\n");
+
     // write stock steps
     if (!(stockShapeLength <= 0 ||
         stockShapeLength.isInfinite ||
@@ -46,7 +50,7 @@ class Calculator {
         stockShapeWeight.isInfinite ||
         stockShapeWeight.isNaN)) {
       // write stock steps as normal
-      showSteps.write("Stock wire:\n");
+      showSteps.write("Stock wire: ${stockShape.showShapeInfo()}\n");
 
       showSteps.write(
           "$formatSpaces Length = ${stockShapeLength.toStringAsFixed(1)} [mm]\n");

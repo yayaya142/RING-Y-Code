@@ -33,6 +33,8 @@ class ThemeColors {
   Color calculatorButtonBorder = Colors.black;
   Color calculatorButtonTextColor = Colors.black;
   // Show more button
+  Color showMoreTextColor = Colors.black;
+  String showMoreFont = '';
   
 }
 

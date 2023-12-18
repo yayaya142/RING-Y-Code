@@ -24,10 +24,10 @@ P = density: according to array metal type VS density
   }
 
   TeXViewDocument weightOutput() {
-    return TeXViewDocument(r"""$$W = A_2 \cdot L_2 \cdot P$$""");
+    return TeXViewDocument(r"""$$W = A \cdot L \cdot P$$""");
   }
 
   TeXViewDocument lengthFormula() {
-    return TeXViewDocument(r"""$$L = \pi \cdot (ID + t)$$""");
+    return TeXViewDocument(r"""$$L_1 = \pi \cdot (ID + t)$$""");
   }
 }

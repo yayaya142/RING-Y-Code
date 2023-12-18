@@ -23,6 +23,17 @@ class TableOfLengthAPI {
 
     return allRingSizes;
   }
+
+  double getInnerDiameter(double size) {
+    // Retrieve all sizes types from the TableOfLength
+    double? innerDiameter = TableOfLengthOfRingDataBase.ringSizeData[size];
+    if (innerDiameter != null) {
+      return innerDiameter;
+    } else {
+      print('Size $size not found in the ringSizeData map.');
+      return -1;
+    }
+  }
 }
 
 class TableOfLengthOfRingDataBase {

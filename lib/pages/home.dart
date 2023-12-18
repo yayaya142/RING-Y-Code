@@ -23,6 +23,7 @@ const String resultBoxSpacing = "     ";
 const double innerBoxTextSize = 17;
 const double shapesAttributesTextSize = 15;
 const double resultBoxTextSize = 18.5;
+const double showMoreInfoSize = 16;
 // headline size and color
 const double shapeHeadlineSize = 20;
 
@@ -606,29 +607,48 @@ class _HomeState extends State<Home> {
                                             context: context,
                                             builder: (BuildContext context) {
                                               return AlertDialog(
-                                                title: Text("Steps"),
+                                                title: Text(
+                                                  "Formulas",
+                                                  style: TextStyle(
+                                                      decoration: TextDecoration
+                                                          .underline),
+                                                ),
                                                 content: SingleChildScrollView(
                                                     child: Column(
                                                   children: [
                                                     Text(showSteps),
                                                     showOnlyCustomerLength
-                                                        ? SizedBox()
+                                                        // show only the customer formula
+                                                        ? TeXView(
+                                                            child:
+                                                                TeXViewColumn(
+                                                                    children: [
+                                                                  ShowFormula()
+                                                                      .lengthFormula(),
+                                                                  customerObjectShapeGUI
+                                                                      .showAreaFunctionLatex(
+                                                                          1),
+                                                                  ShowFormula()
+                                                                      .weightOutput(),
+                                                                ]),
+                                                          )
+                                                        // show all formulas
                                                         : TeXView(
                                                             child:
                                                                 TeXViewColumn(
                                                                     children: [
+                                                                  ShowFormula()
+                                                                      .lengthFormula(),
                                                                   customerObjectShapeGUI
                                                                       .showAreaFunctionLatex(
                                                                           1),
-                                                                  stockObjectShapeGUI
-                                                                      .showAreaFunctionLatex(
-                                                                          2),
-                                                                  ShowFormula()
-                                                                      .stockWireLength(),
                                                                   ShowFormula()
                                                                       .weightOutput(),
                                                                   ShowFormula()
-                                                                      .lengthFormula(),
+                                                                      .stockWireLength(),
+                                                                  stockObjectShapeGUI
+                                                                      .showAreaFunctionLatex(
+                                                                          2),
                                                                 ]),
                                                           )
                                                   ],
