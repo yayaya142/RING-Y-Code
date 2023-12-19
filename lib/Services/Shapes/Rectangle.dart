@@ -75,7 +75,10 @@ class MyRectangle extends MyShapes {
                         border: Border.all(
                           color: CustomContainer().outsideContainerColor,
                         ),
-                        color: shapesContainerColor),
+                        color: shapesContainerColor,
+                        boxShadow: [
+                          containerShapesInfoShadow,
+                        ]),
                     child: Center(
                         child: Text(
                       "Width",
@@ -98,7 +101,10 @@ class MyRectangle extends MyShapes {
                         border: Border.all(
                           color: CustomContainer().outsideContainerColor,
                         ),
-                        color: shapesInputBoxContainerColor),
+                        color: shapesInputBoxContainerColor,
+                        boxShadow: [
+                          containerShapesInputBoxShadow,
+                        ]),
                     child: Row(
                       children: [
                         Expanded(
@@ -172,6 +178,9 @@ class MyRectangle extends MyShapes {
                         color: CustomContainer().outsideContainerColor,
                       ),
                       color: shapesContainerColor,
+                      boxShadow: [
+                        containerShapesInfoShadow,
+                      ],
                     ),
                     child: Center(
                         child: Text(
@@ -196,6 +205,9 @@ class MyRectangle extends MyShapes {
                         color: CustomContainer().outsideContainerColor,
                       ),
                       color: shapesInputBoxContainerColor,
+                      boxShadow: [
+                        containerShapesInputBoxShadow,
+                      ],
                     ),
                     child: Row(
                       children: [

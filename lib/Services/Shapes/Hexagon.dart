@@ -71,7 +71,8 @@ class MyHexagon extends MyShapes {
                 border: Border.all(
                   color: CustomContainer().outsideContainerColor,
                 ),
-                color: shapesContainerColor),
+                color: shapesContainerColor,
+                boxShadow: [containerShapesInfoShadow]),
             child: Center(
                 child: Text(
               "Rib",
@@ -94,7 +95,8 @@ class MyHexagon extends MyShapes {
                 border: Border.all(
                   color: CustomContainer().outsideContainerColor,
                 ),
-                color: shapesInputBoxContainerColor),
+                color: shapesInputBoxContainerColor,
+                boxShadow: [containerShapesInputBoxShadow]),
             child: Row(
               children: [
                 Expanded(

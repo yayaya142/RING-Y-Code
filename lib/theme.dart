@@ -6,7 +6,7 @@ class ThemeColors {
 // body colors
   Color primaryBackgroundColor = Color(0xff7a6161);
   Color secondaryBackgroundColor = Colors.blue;
-  Color backgroundContainerColor = Colors.grey[300]!;
+  Color backgroundContainerColor = Colors.white;
   // fonts
   String headLineFont = 'Poppins';
   String bodyFont = 'Poppins';
@@ -23,10 +23,10 @@ class ThemeColors {
   Color shapesBoxHintColor = Colors.black.withOpacity(0.5);
 
   // container colors
-  Color menuContainerColor = Color(0xffFFDE92);
-  Color shapesContainerColor = Colors.grey[400]!;
-  Color shapesInputBoxContainerColor = Colors.grey[400]!;
-  Color resultContainerColor = Color(0xffFFDE92);
+  Color menuContainerColor = Colors.grey[200]!;
+  Color shapesContainerColor = Colors.grey[300]!;
+  Color shapesInputBoxContainerColor = Colors.grey[300]!;
+  Color resultContainerColor = Colors.grey[300]!;
 
   //  calculator button colors
   Color calculatorButtonColor = Colors.grey;
@@ -35,7 +35,26 @@ class ThemeColors {
   // Show more button
   Color showMoreTextColor = Colors.black;
   String showMoreFont = '';
-  
+
+  // Container Shadow
+  BoxShadow containerMenuShadow = BoxShadow(
+    color: Colors.grey.withOpacity(0.5),
+    spreadRadius: 2,
+    blurRadius: 2,
+    offset: const Offset(0, 3), // changes position of shadow
+  );
+  BoxShadow containerShapesInfoShadow = BoxShadow(
+    color: Colors.grey.withOpacity(0.5),
+    spreadRadius: 2,
+    blurRadius: 2,
+    offset: const Offset(0, 3), // changes position of shadow
+  );
+  BoxShadow containerShapesInputBoxShadow = BoxShadow(
+    color: Colors.grey.withOpacity(0.5),
+    spreadRadius: 2,
+    blurRadius: 2,
+    offset: const Offset(0, 3), // changes position of shadow
+  );
 }
 
 

@@ -132,12 +132,14 @@ class _HomeState extends State<Home> {
                       width: MediaQuery.of(context).size.width *
                           CustomContainer().containerWidth,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(CustomContainer()
-                              .containerInnerSideBorderRadius), // Adjust the radius as needed
-                          border: Border.all(
-                            color: CustomContainer().outsideContainerColor,
-                          ),
-                          color: ThemeColors().menuContainerColor),
+                        borderRadius: BorderRadius.circular(CustomContainer()
+                            .containerInnerSideBorderRadius), // Adjust the radius as needed
+                        border: Border.all(
+                          color: CustomContainer().outsideContainerColor,
+                        ),
+                        color: ThemeColors().menuContainerColor,
+                        boxShadow: [ThemeColors().containerMenuShadow],
+                      ),
                       child: DropdownButton<String>(
                         isExpanded: true,
                         // icon: SizedBox.shrink(),
@@ -194,6 +196,7 @@ class _HomeState extends State<Home> {
                           color: CustomContainer().outsideContainerColor,
                         ),
                         color: ThemeColors().menuContainerColor,
+                        boxShadow: [ThemeColors().containerMenuShadow],
                       ),
                       child: DropdownButton<double>(
                         isExpanded: true,
@@ -250,6 +253,7 @@ class _HomeState extends State<Home> {
                         color: CustomContainer().outsideContainerColor,
                       ),
                       color: ThemeColors().menuContainerColor,
+                      boxShadow: [ThemeColors().containerMenuShadow],
                     ),
                     child: DropdownButton<String>(
                       isExpanded: true,
@@ -328,6 +332,7 @@ class _HomeState extends State<Home> {
                         color: CustomContainer().outsideContainerColor,
                       ),
                       color: ThemeColors().menuContainerColor,
+                      boxShadow: [ThemeColors().containerMenuShadow],
                     ),
                     child: DropdownButton<String>(
                       isExpanded: true,
@@ -489,7 +494,7 @@ class _HomeState extends State<Home> {
                               ? Center(
                                   child: Text("Error, please check the inputs",
                                       style: TextStyle(
-                                          fontSize: resultBoxTextSize + 3,
+                                          fontSize: resultBoxTextSize + 1,
                                           color: Colors.red)),
                                 )
                               : Padding(

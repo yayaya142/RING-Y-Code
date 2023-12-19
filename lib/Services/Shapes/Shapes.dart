@@ -17,6 +17,9 @@ abstract class MyShapes {
       ThemeColors().shapesInputBoxContainerColor;
 
   Color shapesContainerColor = ThemeColors().shapesContainerColor;
+  BoxShadow containerShapesInfoShadow = ThemeColors().containerShapesInfoShadow;
+  BoxShadow containerShapesInputBoxShadow =
+      ThemeColors().containerShapesInputBoxShadow;
 
   double get thickness;
   double calculateArea();

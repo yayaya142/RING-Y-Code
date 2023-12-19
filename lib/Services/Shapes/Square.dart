@@ -67,6 +67,9 @@ class MySquare extends MyShapes {
                 color: CustomContainer().outsideContainerColor,
               ),
               color: shapesContainerColor,
+              boxShadow: [
+                containerShapesInfoShadow,
+              ],
             ),
             child: Center(
                 child: Text(
@@ -91,6 +94,9 @@ class MySquare extends MyShapes {
                 color: CustomContainer().outsideContainerColor,
               ),
               color: shapesInputBoxContainerColor,
+              boxShadow: [
+                containerShapesInputBoxShadow,
+              ],
             ),
             child: Row(
               children: [
