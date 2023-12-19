@@ -45,7 +45,7 @@ class MySemiCircle extends MyShapes {
 
   @override
   String showShapeInfo() {
-    String info = "SemiCircle $diameter [mm]";
+    String info = "Semicircle $diameter [mm]";
     return info;
   }
 

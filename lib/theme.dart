@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:or_calculator/pages/home.dart';
 
 class ThemeColors {
 // app bar colors
@@ -8,14 +9,22 @@ class ThemeColors {
   Color secondaryBackgroundColor = Colors.blue;
   Color backgroundContainerColor = Colors.white;
   // fonts
-  String headLineFont = 'Poppins';
   String bodyFont = 'Poppins';
   String shapesFont = 'Poppins';
   String shapesInputBoxFont = 'Poppins';
   String resultBoxFont = 'Poppins';
 
+// headLine style
+  TextStyle headLineTextStyle = const TextStyle(
+      decoration: TextDecoration.underline,
+      decorationColor: Colors.black, // You can set the underline color
+      decorationThickness: 1.5,
+      fontSize: shapeHeadlineSize,
+      fontFamily: 'Poppins',
+      color: Colors.black,
+      fontWeight: FontWeight.bold);
+
   // Text colors
-  Color headLineTextColor = Colors.black;
   Color bodyTextColor = Colors.black;
   Color shapesTextColor = Colors.black;
   Color resultBoxTextColor = Colors.black;
@@ -23,10 +32,10 @@ class ThemeColors {
   Color shapesBoxHintColor = Colors.black.withOpacity(0.5);
 
   // container colors
-  Color menuContainerColor = Colors.grey[200]!;
+  Color menuContainerColor = Colors.grey[400]!;
   Color shapesContainerColor = Colors.grey[300]!;
   Color shapesInputBoxContainerColor = Colors.grey[300]!;
-  Color resultContainerColor = Colors.grey[300]!;
+  Color resultContainerColor = Colors.orange[100]!;
 
   //  calculator button colors
   Color calculatorButtonColor = Colors.grey;

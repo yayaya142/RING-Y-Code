@@ -103,14 +103,13 @@ class _HomeState extends State<Home> {
         centerTitle: true,
       ),
       body: Container(
-        // decoration:
-        // BoxDecoration(
-        // image: DecorationImage(
-        //   image: AssetImage('assets/background_image1.png'),
-        //   fit: BoxFit.fill,
-        // ),
-        // ),
-        color: ThemeColors().backgroundContainerColor,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/background_image.png'),
+            fit: BoxFit.fill,
+          ),
+        ),
+        // color: ThemeColors().backgroundContainerColor,
         child: ListView(
           children: [
             Padding(
@@ -119,11 +118,10 @@ class _HomeState extends State<Home> {
                 children: [
                   Text(
                     'Ring Wire',
-                    style: TextStyle(
-                        fontSize: shapeHeadlineSize,
-                        fontFamily: ThemeColors().headLineFont,
-                        color: ThemeColors().headLineTextColor,
-                        fontWeight: FontWeight.bold),
+                    style: ThemeColors().headLineTextStyle,
+                  ),
+                  SizedBox(
+                    height: sizeBoxHeight,
                   ),
                   Center(
                     child: Container(
@@ -314,11 +312,10 @@ class _HomeState extends State<Home> {
                   ),
                   Text(
                     'Stock Wire',
-                    style: TextStyle(
-                        fontSize: shapeHeadlineSize,
-                        color: ThemeColors().headLineTextColor,
-                        fontFamily: ThemeColors().headLineFont,
-                        fontWeight: FontWeight.bold),
+                    style: ThemeColors().headLineTextStyle,
+                  ),
+                  SizedBox(
+                    height: sizeBoxHeight,
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height *
@@ -389,7 +386,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   SizedBox(
-                    height: 0,
+                    height: 6,
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -473,7 +470,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   SizedBox(
-                    height: 7,
+                    height: 12,
                   ),
                   showSteps == "No steps to show"
                       ? SizedBox()
@@ -492,10 +489,10 @@ class _HomeState extends State<Home> {
                           ),
                           child: resultError
                               ? Center(
-                                  child: Text("Error, please check the inputs",
+                                  child: Text("Check your input",
                                       style: TextStyle(
-                                          fontSize: resultBoxTextSize + 1,
-                                          color: Colors.red)),
+                                          fontSize: resultBoxTextSize + 3,
+                                          color: Colors.black)),
                                 )
                               : Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -664,7 +661,10 @@ class _HomeState extends State<Home> {
                                                       Navigator.of(context)
                                                           .pop();
                                                     },
-                                                    child: Text("Close"),
+                                                    child: Text("Close",
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.blue)),
                                                   ),
                                                 ],
                                               );
