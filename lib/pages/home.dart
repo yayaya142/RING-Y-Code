@@ -427,7 +427,9 @@ class _HomeState extends State<Home> {
                         // if the customer info is empty
                         if (customerShapeLength < 0 ||
                             customerShapeLength.isNaN ||
-                            customerShapeLength.isInfinite) {
+                            customerShapeLength.isInfinite ||
+                            customerShapeData['ringMetalType'] == null ||
+                            customerShapeData['ringMetalType'].isEmpty) {
                           resultError = true;
                           showSteps = "Error";
                           customerShapeLength = 0.0;
@@ -611,14 +613,20 @@ class _HomeState extends State<Home> {
                                               return AlertDialog(
                                                 title: Text(
                                                   "Formulas",
-                                                  style: TextStyle(
-                                                      decoration: TextDecoration
-                                                          .underline),
+                                                  style: ThemeColors()
+                                                      .headLineTextStyle,
                                                 ),
                                                 content: SingleChildScrollView(
                                                     child: Column(
                                                   children: [
-                                                    Text(showSteps),
+                                                    Text(
+                                                      showSteps,
+                                                      style: TextStyle(
+                                                          fontSize: 13,
+                                                          fontFamily:
+                                                              ThemeColors()
+                                                                  .bodyFont),
+                                                    ),
                                                     showOnlyCustomerLength
                                                         // show only the customer formula
                                                         ? TeXView(
@@ -663,8 +671,10 @@ class _HomeState extends State<Home> {
                                                     },
                                                     child: Text("Close",
                                                         style: TextStyle(
-                                                            color:
-                                                                Colors.blue)),
+                                                            color: Colors.blue,
+                                                            fontFamily:
+                                                                ThemeColors()
+                                                                    .bodyFont)),
                                                   ),
                                                 ],
                                               );

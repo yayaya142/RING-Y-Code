@@ -29,7 +29,7 @@ dev_dependencies:
 
 # add splash screen
 flutter_native_splash:
-  color: "#ffffff"
+  color: "#EFEEE9"
   image: assets/splash.png
   android: true
   ios: true

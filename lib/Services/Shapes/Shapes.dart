@@ -5,7 +5,7 @@ import 'package:flutter_tex/flutter_tex.dart';
 import 'package:or_calculator/theme.dart';
 
 abstract class MyShapes {
-  double textFiledPadding = 7;
+  double textFiledPadding = 8;
   double sizeBoxWidth = 15;
   String textFiledHintText = "Type";
   String shapesTextFont = ThemeColors().shapesFont;
