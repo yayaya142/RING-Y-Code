@@ -14,14 +14,14 @@ import 'package:flutter_tex/flutter_tex.dart';
 // Home Page variables for shapes
 const double allSizePadding = 15.0;
 const double sizeBoxHeight = 10;
-const double sizeBoxWidth = 15;
+const double sizeBoxWidth = 12;
 const double shapeSizeBoxHeight = 5;
 const double calculateButtonWidth = 0.6;
 const double calculateButtonHeight = 0.04;
 const String resultBoxSpacing = "     ";
 // Page Text
 const double innerBoxTextSize = 17;
-const double shapesAttributesTextSize = 15;
+const double shapesAttributesTextSize = 14;
 const double resultBoxTextSize = 18.5;
 const double showMoreInfoSize = 16;
 // headline size and color

@@ -122,7 +122,7 @@ class MyRectangle extends MyShapes {
                                 fontFamily: shapesInputBoxFont,
                                 color: shapesTextColor),
                             textAlign: TextAlign.center,
-                            maxLength: 8,
+                            maxLength: maxLengthForInputBox,
                             onChanged: (widthTextFiled) {
                               if (isCustomerBuild) {
                                 customerShapeData["width"] =
@@ -226,7 +226,7 @@ class MyRectangle extends MyShapes {
                                 fontFamily: shapesInputBoxFont,
                                 color: shapesTextColor),
                             textAlign: TextAlign.center,
-                            maxLength: 8,
+                            maxLength: maxLengthForInputBox,
                             onChanged: (thicknessTextFiled) {
                               if (isCustomerBuild) {
                                 customerShapeData["thickness"] =

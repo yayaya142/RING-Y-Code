@@ -115,7 +115,7 @@ class MySemiCircle extends MyShapes {
                         fontFamily: shapesInputBoxFont,
                         color: shapesTextColor),
                     textAlign: TextAlign.center,
-                    maxLength: 8,
+                    maxLength: maxLengthForInputBox,
                     onChanged: (diameterTextFiled) {
                       if (isCustomerBuild) {
                         customerShapeData["diameter"] =

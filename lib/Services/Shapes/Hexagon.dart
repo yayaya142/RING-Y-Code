@@ -113,7 +113,7 @@ class MyHexagon extends MyShapes {
                         fontFamily: shapesInputBoxFont,
                         color: shapesTextColor),
                     textAlign: TextAlign.center,
-                    maxLength: 8,
+                    maxLength: maxLengthForInputBox,
                     onChanged: (ribTextFiled) {
                       if (isCustomerBuild) {
                         customerShapeData["width"] = double.parse(ribTextFiled);

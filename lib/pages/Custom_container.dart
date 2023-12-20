@@ -13,10 +13,16 @@ class CustomContainer {
   double containerWidth = 0.8;
   double containerHeight = 0.05;
 // container size for shapes size
-  double containerWidthForShapesType = 1.55;
-  double containerHeightForShapesType = 1.2;
-  double containerWidthForShapesData = 3;
-  double containerHeightForShapesData = 1.2;
+  // double containerWidthForShapesType = 1.55;
+  // double containerHeightForShapesType = 1.2;
+  // double containerWidthForShapesData = 3;
+  // double containerHeightForShapesData = 1.2;
+
+  double containerWidthForShapesType = 1.7;
+  double containerHeightForShapesType = 1.15;
+  double containerWidthForShapesData = 2.7;
+  double containerHeightForShapesData = 1.15;
+
   // container size result
   double containerWidthForResult = 0.8;
   double containerHeightForResult = 0.2;
