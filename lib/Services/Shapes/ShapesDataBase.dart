@@ -10,10 +10,10 @@ class ShapeDataBaseAPI {
 
 class ShapeDataBase {
   static List<String> shapes = [
-    "Circle",
-    "Semi Circle",
-    "Square",
-    "Rectangle",
-    "Hexagon",
+    "Round Wire",
+    "Half Round Wire",
+    "Square Wire",
+    "Rectangular Wire",
+    "Hexagon Wire",
   ];
 }

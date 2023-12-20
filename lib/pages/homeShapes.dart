@@ -11,15 +11,15 @@ class CreateShapeObject {
   MyShapes createShape(
       String className, double diameter, double width, double thickness) {
     switch (className) {
-      case 'Circle':
+      case 'Round Wire':
         return MyCircle(diameter);
-      case 'Semi Circle':
+      case 'Half Round Wire':
         return MySemiCircle(diameter);
-      case 'Rectangle':
+      case 'Rectangular Wire':
         return MyRectangle(width, thickness);
-      case 'Square':
+      case 'Square Wire':
         return MySquare(width);
-      case 'Hexagon':
+      case 'Hexagon Wire':
         return MyHexagon(width);
       default:
         return MySquare(0);

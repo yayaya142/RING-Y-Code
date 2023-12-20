@@ -621,11 +621,7 @@ class _HomeState extends State<Home> {
                                                   children: [
                                                     Text(
                                                       showSteps,
-                                                      style: TextStyle(
-                                                          fontSize: 13,
-                                                          fontFamily:
-                                                              ThemeColors()
-                                                                  .bodyFont),
+                                                      style: TextStyle(),
                                                     ),
                                                     showOnlyCustomerLength
                                                         // show only the customer formula
