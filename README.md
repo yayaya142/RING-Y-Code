@@ -27,10 +27,8 @@ Elevate your jewelry crafting experience with RING’Y – the must-have tool fo
 *Main screen<br>*
 <img src="https://github.com/yayaya142/Wire-Converter/blob/main/assets/Phone%20screenshot/main%20screen.jpg" alt="Main Screen" width="200"/>
 
-*Demo<br>*
 <img src="https://github.com/yayaya142/Wire-Converter/blob/main/assets/Phone%20screenshot/demo.jpg" alt="Demo" width="200"/>
 
-*Demo 2<br>*
 <img src="https://github.com/yayaya142/Wire-Converter/blob/main/assets/Phone%20screenshot/demo%202.jpg" alt="Demo 2" width="200"/>
 
 *Formulas<br>*
