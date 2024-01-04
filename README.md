@@ -1,16 +1,40 @@
-# or_calculator
+# RING’Y: Your Ultimate Jewelry Design Companion
 
-A new Flutter project.
+Are you a jeweler who crafts beautiful rings from wires? Meet RING’Y, your powerful ally in the world of jewelry design!
 
-## Getting Started
+## Key Features
 
-This project is a starting point for a Flutter application.
+📏 **Precision Calculations:** No more guesswork! Input your preferred metal type, ring size, and wire shape, and let RING’Y do the math. Instantly get accurate wire length calculations for your unique designs.
 
-A few resources to get you started if this is your first Flutter project:
+💡 **Stock Wire Optimization:** Say goodbye to wasted materials! If you have a specific wire diameter and need a particular length for your design, RING’Y will guide you on cutting the perfect stock wire length, minimizing waste.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+🎨 **Intuitive Design:** Crafted by jewelers, for jewelers. RING’Y boasts an intuitive design and user-friendly features tailored to streamline your workflow. Spend less time crunching numbers and more time bringing your jewelry visions to life.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## How RING’Y Works
+
+1. **Insert Parameters:** Select your metal type, ring size, and wire shape.
+2. **Get Calculations:** RING’Y instantly provides accurate wire length calculations.
+3. **Optimize Stock:** Need to cut stock wire? RING’Y guides you to the precise length, reducing material waste.
+
+   
+Elevate your jewelry crafting experience with RING’Y – the must-have tool for passionate jewelers.
+
+[Download RING’Y Now and Transform Your Jewelry Design Process!] **add download link to Google Play**<br>
+## ADD LINK!!!
+
+## Screenshots
+
+*Main screen<br>*
+<img src="https://github.com/yayaya142/Wire-Converter/blob/main/assets/Phone%20screenshot/main%20screen.jpg" alt="Main Screen" width="200"/>
+
+*Demo<br>*
+<img src="https://github.com/yayaya142/Wire-Converter/blob/main/assets/Phone%20screenshot/demo.jpg" alt="Demo" width="200"/>
+
+*Demo 2<br>*
+<img src="https://github.com/yayaya142/Wire-Converter/blob/main/assets/Phone%20screenshot/demo%202.jpg" alt="Demo 2" width="200"/>
+
+*Formulas<br>*
+<img src="https://github.com/yayaya142/Wire-Converter/blob/main/assets/Phone%20screenshot/formulas.jpg" alt="Formulas" width="200"/>
+
+
+
