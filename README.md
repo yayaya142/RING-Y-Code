@@ -34,5 +34,6 @@ Elevate your jewelry crafting experience with RING’Y – the must-have tool fo
 *Formulas<br>*
 <img src="https://github.com/yayaya142/Wire-Converter/blob/main/assets/Phone%20screenshot/formulas.jpg" alt="Formulas" width="200"/>
 
-
+## Credit
+The app was developed by Shai Odeni using Flutter.
 
