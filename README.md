@@ -19,8 +19,7 @@ Are you a jeweler who crafts beautiful rings from wires? Meet RING’Y, your pow
    
 Elevate your jewelry crafting experience with RING’Y – the must-have tool for passionate jewelers.
 
-[Download RING’Y Now and Transform Your Jewelry Design Process!] **add download link to Google Play**<br>
-## ADD LINK!!!
+[Download RING’Y Now and Transform Your Jewelry Design Process!] <br>
 
 ## Screenshots
 
